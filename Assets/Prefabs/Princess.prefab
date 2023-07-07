@@ -89,7 +89,7 @@ MonoBehaviour:
   movement: {fileID: 1439740870311606528}
   power: 10
   duration: 0.1
-  cooldown: 0.1
+  cooldown: 1
 --- !u!33 &7496566891266148305
 MeshFilter:
   m_ObjectHideFlags: 0

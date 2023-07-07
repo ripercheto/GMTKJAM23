@@ -24,7 +24,7 @@ public class Attack : MovementBehaviour
         allowedHitTime = Time.time + duration + cooldown;
 
         movement.StartDash(dir, power, duration, null);
-        StartCoroutine(SwingWeapon(dir, duration, attackAngle));
+        //StartCoroutine(SwingWeapon(dir, duration, attackAngle));
     }
 
     private IEnumerator SwingWeapon(Vector3 direction, float duration, float arcAngle)

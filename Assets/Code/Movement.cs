@@ -75,9 +75,10 @@ public class Movement : MonoBehaviour
         var t = 0f;
         while (t < duration)
         {
-            t += Time.deltaTime;
-            overrideVelocity = newVelocity;
-            yield return null;
+            t += Time.fixedDeltaTime;
+            var movementPerFrame = Vector3.MoveTowards(body.position, body.position + newVelocity, Time.fixedDeltaTime);
+            overrideVelocity = movementPerFrame;
+            yield return new WaitForFixedUpdate();
         }
         overrideVelocity = null;
         onEnd?.Invoke();

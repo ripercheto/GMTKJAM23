@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 public class Movement : MonoBehaviour
 {
@@ -9,8 +11,10 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private Rigidbody body;
 
+    private Vector3? overrideVelocity;
     private Vector3 velocity;
     private Vector2 desiredVelocity;
+    private Coroutine dashCoroutine;
 
     public void UpdateDesiredVelocity(Vector3 newDesiredVelocity)
     {
@@ -23,11 +27,25 @@ public class Movement : MonoBehaviour
         desiredVelocity = Vector2.ClampMagnitude(newDesiredVelocity, 1f) * maxSpeed;
     }
 
+    public void StartDash(Vector3 direction, float power, float duration)
+    {
+        if (dashCoroutine != null)
+        {
+            StopCoroutine(dashCoroutine);
+        }
+        dashCoroutine = StartCoroutine(OverrideVelocity(direction * power, duration, null));
+    }
+
     private void FixedUpdate()
     {
+        if (overrideVelocity.HasValue)
+        {
+            body.velocity = overrideVelocity.Value;
+            return;
+        }
+
         UpdateState();
         AdjustVelocity();
-
         body.velocity = velocity;
     }
 
@@ -50,5 +68,18 @@ public class Movement : MonoBehaviour
         var newZ = Mathf.MoveTowards(currentZ, desiredVelocity.y, maxSpeedChange);
 
         velocity += xAxis * (newX - currentX) + zAxis * (newZ - currentZ);
+    }
+
+    private IEnumerator OverrideVelocity(Vector3 newVelocity, float duration, Action onEnd)
+    {
+        var t = 0f;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            overrideVelocity = newVelocity;
+            yield return null;
+        }
+        overrideVelocity = null;
+        onEnd?.Invoke();
     }
 }

@@ -2,17 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class Knight : MonoBehaviour
+public class Princess : MovementBehaviour
 {
-    public Movement movement;
-
+    public Attack attack;
     public float distanceFromWayPoint = 1;
     public Transform[] wayPoints;
 
     private Transform CurrentWaypoint => wayPoints[wayPointIndex];
     private int wayPointIndex;
-
+    private Vector3 lastPosition;
+    
     private void Update()
     {
         var pos = transform.GetFlatPosition();
@@ -30,5 +31,13 @@ public class Knight : MonoBehaviour
                 wayPointIndex = 0;
             }
         }
+        
+        if (Random.value > 0.99f)
+        {
+            var dashDir = pos - lastPosition;
+            attack.TryPerformAttack(dashDir.normalized);
+        }
+
+        lastPosition = pos;
     }
 }

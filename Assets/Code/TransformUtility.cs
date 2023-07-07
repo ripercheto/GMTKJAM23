@@ -4,10 +4,13 @@ using UnityEngine;
 
 public static class TransformUtility
 {
+    public static Vector3 GetFlatPosition(this Vector3 position)
+    {
+        position.y = 0;
+        return position;
+    }
     public static Vector3 GetFlatPosition(this Transform transform)
     {
-        var pos = transform.position;
-        pos.y = 0;
-        return pos;
+       return GetFlatPosition(transform.position);
     }
 }

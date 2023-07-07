@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerInput : MovementBehaviour
 {
-    public Movement movement;
-
     void Update()
     {
         Vector2 playerInput;

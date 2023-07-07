@@ -7,18 +7,14 @@ public class SimpleMovement : MonoBehaviour
     [SerializeField]
     private float maxAcceleration = 10f;
     [SerializeField]
-    private Rigidbody2D body;
+    private Rigidbody body;
 
-    private Vector2 velocity, desiredVelocity;
+    private Vector3 velocity;
+    private Vector2 desiredVelocity;
 
-    private void Update()
+    public void UpdateDesiredVelocity(Vector2 newDesiredVelocity)
     {
-        Vector2 playerInput;
-        playerInput.x = Input.GetAxis("Horizontal");
-        playerInput.y = Input.GetAxis("Vertical");
-        playerInput = Vector2.ClampMagnitude(playerInput, 1f);
-
-        desiredVelocity = playerInput * maxSpeed;
+        desiredVelocity = newDesiredVelocity * maxSpeed;
     }
 
     private void FixedUpdate()
@@ -36,17 +32,17 @@ public class SimpleMovement : MonoBehaviour
 
     private void AdjustVelocity()
     {
-        var xAxis = Vector2.right;
-        var yAxis = Vector2.up;
+        var xAxis = Vector3.right;
+        var zAxis = Vector3.forward;
 
         var currentX = Vector3.Dot(velocity, xAxis);
-        var currentY = Vector3.Dot(velocity, yAxis);
+        var currentZ = Vector3.Dot(velocity, zAxis);
 
         var maxSpeedChange = maxAcceleration * Time.deltaTime;
 
         var newX = Mathf.MoveTowards(currentX, desiredVelocity.x, maxSpeedChange);
-        var newY = Mathf.MoveTowards(currentY, desiredVelocity.y, maxSpeedChange);
+        var newZ = Mathf.MoveTowards(currentZ, desiredVelocity.y, maxSpeedChange);
 
-        velocity += xAxis * (newX - currentX) + yAxis * (newY - currentY);
+        velocity += xAxis * (newX - currentX) + zAxis * (newZ - currentZ);
     }
 }

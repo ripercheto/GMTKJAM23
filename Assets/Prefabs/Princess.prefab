@@ -174,7 +174,7 @@ MonoBehaviour:
   attackPrefab: {fileID: 7676132184079862119, guid: e9a71359018037946ab0a8d7d9b57842,
     type: 3}
   power: 10
-  duration: 0.1
+  duration: 0.5
   attackAngle: 180
   cooldown: 1
 --- !u!114 &6097419448557745876

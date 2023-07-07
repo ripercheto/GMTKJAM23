@@ -1,5 +1,5 @@
 using UnityEngine;
-public class SimpleMovement : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     [SerializeField]
     private float maxSpeed = 10f;
@@ -12,9 +12,15 @@ public class SimpleMovement : MonoBehaviour
     private Vector3 velocity;
     private Vector2 desiredVelocity;
 
+    public void UpdateDesiredVelocity(Vector3 newDesiredVelocity)
+    {
+        var flatVelocity = new Vector2(newDesiredVelocity.x, newDesiredVelocity.z);
+        UpdateDesiredVelocity(flatVelocity);
+    }
+
     public void UpdateDesiredVelocity(Vector2 newDesiredVelocity)
     {
-        desiredVelocity = newDesiredVelocity * maxSpeed;
+        desiredVelocity = Vector2.ClampMagnitude(newDesiredVelocity, 1f) * maxSpeed;
     }
 
     private void FixedUpdate()

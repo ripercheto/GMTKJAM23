@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Princess : MovementBehaviour
 {
@@ -13,12 +12,12 @@ public class Princess : MovementBehaviour
     private Transform CurrentWaypoint => wayPoints[wayPointIndex];
     private int wayPointIndex;
     private Vector3 lastPosition;
-    
+
     private void Update()
     {
         var pos = transform.GetFlatPosition();
         var targetPos = CurrentWaypoint.GetFlatPosition();
-        if (Vector3.Distance(pos,targetPos) > distanceFromWayPoint)
+        if (Vector3.Distance(pos, targetPos) > distanceFromWayPoint)
         {
             var dir = targetPos - pos;
             movement.UpdateDesiredVelocity(dir);
@@ -31,13 +30,9 @@ public class Princess : MovementBehaviour
                 wayPointIndex = 0;
             }
         }
-        
-        if (Random.value > 0.99f)
-        {
-            var dashDir = pos - lastPosition;
-            attack.TryPerformAttack(dashDir.normalized);
-        }
 
+        var dashDir = pos - lastPosition;
+        attack.TryPerformAttack(dashDir.normalized);
         lastPosition = pos;
     }
 }

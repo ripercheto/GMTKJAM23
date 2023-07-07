@@ -29,6 +29,7 @@ public class Movement : MonoBehaviour
 
     public void StartDash(Vector3 direction, float power, float duration, Action onEnd)
     {
+        Debug.Log("Dash");
         if (dashCoroutine != null)
         {
             StopCoroutine(dashCoroutine);
@@ -75,11 +76,12 @@ public class Movement : MonoBehaviour
         var t = 0f;
         while (t < duration)
         {
-            t += Time.fixedDeltaTime;
-            var movementPerFrame = Vector3.MoveTowards(body.position, body.position + newVelocity, Time.fixedDeltaTime);
-            overrideVelocity = movementPerFrame;
-            yield return new WaitForFixedUpdate();
+            t += Time.deltaTime;
+            overrideVelocity = newVelocity;
+            yield return null;
         }
+        overrideVelocity = Vector3.zero;
+        yield return new WaitForFixedUpdate();
         overrideVelocity = null;
         onEnd?.Invoke();
     }

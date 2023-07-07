@@ -9,7 +9,6 @@ public class Attack : MovementBehaviour
 
     public float power = 10f;
     public float duration = 0.1f;
-    public float holdDuration = 0.1f;
     public float attackAngle = 180f;
     public float cooldown = 0.5f;
 
@@ -22,18 +21,13 @@ public class Attack : MovementBehaviour
         {
             return;
         }
-        allowedHitTime = Time.time + duration + holdDuration + cooldown;
+        allowedHitTime = Time.time + duration + cooldown;
 
-        movement.StartDash(dir, power, duration, Hold);
-        StartCoroutine(SwingWeapon(dir, duration));
-
-        void Hold()
-        {
-            movement.StartDash(Vector3.zero, 0, holdDuration, null);
-        }
+        movement.StartDash(dir, power, duration, null);
+        StartCoroutine(SwingWeapon(dir, duration, attackAngle));
     }
 
-    private IEnumerator SwingWeapon(Vector3 direction, float duration, float arcAngle = 90f)
+    private IEnumerator SwingWeapon(Vector3 direction, float duration, float arcAngle)
     {
         var halfAngle = arcAngle * 0.5f;
         var startRotation = Quaternion.LookRotation(direction, Vector3.up);

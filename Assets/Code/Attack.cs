@@ -7,7 +7,7 @@ public class Attack : MovementBehaviour
 {
     public Weapon weaponPrefab;
 
-    public float power = 10f;
+    public float damage = 50f;
     public float duration = 0.1f;
     public float attackAngle = 180f;
     public float cooldown = 0.5f;
@@ -32,6 +32,7 @@ public class Attack : MovementBehaviour
         var halfAngle = arcAngle * 0.5f;
         var startRotation = Quaternion.LookRotation(direction, Vector3.up);
         weapon = Instantiate(weaponPrefab, transform.position, startRotation * Quaternion.AngleAxis(-halfAngle, Vector3.up));
+        weapon.actionOnEnter = (x) => x.TakeDamage(damage);
         var t = 0f;
         while (t < 1f)
         { 

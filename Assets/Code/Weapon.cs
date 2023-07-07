@@ -4,8 +4,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public Rigidbody body;
-    public float damage = 10;
-    private readonly List<Health> healths = new();
+    public readonly List<Health> healths = new();
+    public Action<Health> actionOnEnter;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,7 +16,7 @@ public class Weapon : MonoBehaviour
             return;
         }
 
-        health.TakeDamage(damage);
+        actionOnEnter?.Invoke(health);
         healths.Add(health);
     }
 }

@@ -27,13 +27,13 @@ public class Movement : MonoBehaviour
         desiredVelocity = Vector2.ClampMagnitude(newDesiredVelocity, 1f) * maxSpeed;
     }
 
-    public void StartDash(Vector3 direction, float power, float duration)
+    public void StartDash(Vector3 direction, float power, float duration, Action onEnd)
     {
         if (dashCoroutine != null)
         {
             StopCoroutine(dashCoroutine);
         }
-        dashCoroutine = StartCoroutine(OverrideVelocity(direction * power, duration, null));
+        dashCoroutine = StartCoroutine(OverrideVelocity(direction * power, duration, onEnd));
     }
 
     private void FixedUpdate()

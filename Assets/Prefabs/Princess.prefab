@@ -30,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5279574380304202595}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11, y: 0.5, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 2
-  maxAcceleration: 100
+  maxAcceleration: 5
   body: {fileID: 6221975026285820}
 --- !u!114 &937698322564625753
 MonoBehaviour:
@@ -89,6 +89,7 @@ MonoBehaviour:
   movement: {fileID: 1439740870311606528}
   power: 10
   duration: 0.1
+  holdDuration: 0.3
   cooldown: 1
 --- !u!33 &7496566891266148305
 MeshFilter:

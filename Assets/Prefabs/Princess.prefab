@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 1439740870311606528}
-  attackPrefab: {fileID: 7676132184079862119, guid: e9a71359018037946ab0a8d7d9b57842,
+  weaponPrefab: {fileID: 3436212203780608517, guid: e9a71359018037946ab0a8d7d9b57842,
     type: 3}
   power: 10
   duration: 0.5
@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714a367fe179cbd4086255f8a0097002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!135 &3221486286775184931
 SphereCollider:
   m_ObjectHideFlags: 0

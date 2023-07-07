@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private float maxAcceleration = 10f;
     [SerializeField]
-    private Rigidbody body;
+    public Rigidbody body;
 
     private Vector3? overrideVelocity;
     private Vector3 velocity;

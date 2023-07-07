@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class Attack : MovementBehaviour
 {
-    public GameObject attackPrefab;
+    public Weapon weaponPrefab;
 
     public float power = 10f;
     public float duration = 0.1f;
     public float attackAngle = 180f;
     public float cooldown = 0.5f;
 
-    private GameObject attackObject;
+    private Weapon weapon;
     private float allowedHitTime;
 
     public void TryPerformAttack(Vector3 dir)
@@ -31,15 +31,16 @@ public class Attack : MovementBehaviour
     {
         var halfAngle = arcAngle * 0.5f;
         var startRotation = Quaternion.LookRotation(direction, Vector3.up);
-        attackObject = Instantiate(attackPrefab, transform.position, startRotation * Quaternion.AngleAxis(-halfAngle, Vector3.up));
+        weapon = Instantiate(weaponPrefab, transform.position, startRotation * Quaternion.AngleAxis(-halfAngle, Vector3.up));
         var t = 0f;
         while (t < 1f)
-        {
-            t += Time.deltaTime / duration;
-            yield return null;
+        { 
+            t += Time.fixedDeltaTime / duration;
+            yield return new WaitForFixedUpdate();
             var angle = Mathf.Lerp(-halfAngle, halfAngle, t);
-            attackObject.transform.SetPositionAndRotation(transform.position, startRotation * Quaternion.AngleAxis(angle, Vector3.up));
+            weapon.body.MovePosition(movement.body.position);
+            weapon.body.MoveRotation(startRotation * Quaternion.AngleAxis(angle, Vector3.up));
         }
-        Destroy(attackObject);
+        Destroy(weapon.gameObject);
     }
 }

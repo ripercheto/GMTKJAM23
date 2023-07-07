@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Princess : MovementBehaviour
 {
+    public static Princess instance;
+    
     public Attack attack;
     public float distanceFromWayPoint = 1;
     public Transform[] wayPoints;
@@ -12,6 +14,11 @@ public class Princess : MovementBehaviour
     private Transform CurrentWaypoint => wayPoints[wayPointIndex];
     private int wayPointIndex;
     private Vector3 lastPosition;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Update()
     {

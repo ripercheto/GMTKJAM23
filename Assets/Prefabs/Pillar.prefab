@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2489466269142762635}
   - component: {fileID: 9123109000988271492}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PillarFade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1602813997568808825}
   - component: {fileID: 6916286671370389504}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,5 +136,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.2
+  m_Radius: 1.45
   m_Center: {x: 0, y: 0.5, z: 0}

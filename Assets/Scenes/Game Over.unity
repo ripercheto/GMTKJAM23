@@ -1169,6 +1169,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1360275876}
     m_Modifications:
+    - target: {fileID: 1414621340660298934, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414621340660298934, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414621340660298934, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 468737942}
+    - target: {fileID: 1414621340660298934, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414621340660298934, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414621340660298934, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414621340660298934, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4147319430267102742, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1192,7 +1227,7 @@ PrefabInstance:
     - target: {fileID: 4147319430267102742, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4147319430267102742, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
@@ -1202,7 +1237,7 @@ PrefabInstance:
     - target: {fileID: 4147319430267102742, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4147319430267102742, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
@@ -1257,7 +1292,7 @@ PrefabInstance:
     - target: {fileID: 4147319430267102742, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -160.02084
+      value: 83
       objectReference: {fileID: 0}
     - target: {fileID: 4147319430267102742, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
@@ -1282,12 +1317,12 @@ PrefabInstance:
     - target: {fileID: 4609831346966712430, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5783355118106846782, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
       propertyPath: m_text
-      value: Options
+      value: Play Again
       objectReference: {fileID: 0}
     - target: {fileID: 5783355118106846782, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
@@ -1655,7 +1690,7 @@ PrefabInstance:
     - target: {fileID: 4147319430267102742, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -250
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4147319430267102742, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
@@ -1685,7 +1720,7 @@ PrefabInstance:
     - target: {fileID: 4609831346966712430, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5783355118106846782, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
@@ -1724,7 +1759,7 @@ PrefabInstance:
     - target: {fileID: 1414621340660298934, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1414621340660298934, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
@@ -1760,7 +1795,7 @@ PrefabInstance:
     - target: {fileID: 1414621340660298934, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartGame
+      value: GoToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 1414621340660298934, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
@@ -1795,7 +1830,7 @@ PrefabInstance:
     - target: {fileID: 4147319430267102742, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4147319430267102742, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
@@ -1805,7 +1840,7 @@ PrefabInstance:
     - target: {fileID: 4147319430267102742, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4147319430267102742, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
@@ -1860,7 +1895,7 @@ PrefabInstance:
     - target: {fileID: 4147319430267102742, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 3.4285984
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4147319430267102742, guid: 48a74ae34b0524d47a5c5c15f3dba66b,
         type: 3}

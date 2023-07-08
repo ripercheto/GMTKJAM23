@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class OffscreenIndicator : MonoBehaviour
 {
-    public Camera cam;
     public RectTransform element;
     public RectTransform canvasRectTransform;
     private GameObject target;
@@ -22,7 +21,7 @@ public class OffscreenIndicator : MonoBehaviour
     private void Update()
     {
         //0,0 for the canvas is at the center of the screen, whereas WorldToViewPortPoint treats the lower left corner as 0,0. Because of this, you need to subtract the height / width of the canvas * 0.5 to get the correct position.
-        var viewportPos = cam.WorldToViewportPoint(target.transform.position);
+        var viewportPos = MainCharacters.Camera.WorldToViewportPoint(target.transform.position);
         if (viewportPos.x > 0 && viewportPos.x < 1 && viewportPos.y > 0 && viewportPos.y < 1)
         {
             element.gameObject.SetActive(false);

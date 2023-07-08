@@ -7,6 +7,20 @@ public static class MainCharacters
     public static List<Transform> targets = new List<Transform>();
     public static event Action onMainDeath;
 
+    public static Camera Camera
+    {
+        get
+        {
+            if (cam == null)
+            {
+                cam = Camera.main;
+            }
+            return cam;
+        }
+    }
+
+    private static Camera cam;
+
     public static void AddToMainCharacters(GameBehaviour gameBehaviour)
     {
         gameBehaviour.health.onDeath += OnDeath;

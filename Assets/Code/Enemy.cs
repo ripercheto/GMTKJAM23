@@ -34,17 +34,19 @@ public class Enemy : GameBehaviour
     private void OnEnable()
     {
         attackTime = Time.time + attackCooldown;
-        //if(health.flashController.rend.isVisible)
+
+        var viewportPos = MainCharacters.Camera.WorldToViewportPoint(transform.position);
+        if (viewportPos.x >= 0 && viewportPos.x <= 1 && viewportPos.y >= 0 && viewportPos.y <= 1)
         {
             var particlePool = ParticlePool.Get(ParticleType.Spawn);
-            particlePool.Activate(transform.position + particleOffset, (x)=>x.Play());
+            particlePool.Activate(transform.position + particleOffset, (x) => x.Play());
         }
     }
 
     private void OnDeath()
     {
         var particlePool = ParticlePool.Get(ParticleType.Death);
-        particlePool.Activate(transform.position + particleOffset, (x)=>x.Play());
+        particlePool.Activate(transform.position + particleOffset, (x) => x.Play());
         health.ResetHealth();
         EnemyPool.bat.Deactivate(this);
     }
@@ -130,7 +132,7 @@ public class Enemy : GameBehaviour
 
         if (useProjectile)
         {
-            EnemyProjectilePool.instance.Activate(transform.position, (x)=> x.Launch(dir, attackDamage));
+            EnemyProjectilePool.instance.Activate(transform.position, (x) => x.Launch(dir, attackDamage));
         }
         else
         {

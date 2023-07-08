@@ -13,6 +13,11 @@ public class Attack : GameBehaviour
     private Dictionary<WeaponData, float> durability = new();
     public Action<float> onDurabilityChanged;
 
+    private void Start()
+    {
+        onDurabilityChanged?.Invoke(HasWeapon ? 1 : 0);
+    }
+
     public bool TryEquipWeapon(WeaponData weaponData)
     {
         if (data != null)
@@ -54,7 +59,7 @@ public class Attack : GameBehaviour
         void OnDone(bool didHit)
         {
             attacker.onDeath -= OnAttackerDied;
-            
+
             if (!didHit)
             {
                 return;

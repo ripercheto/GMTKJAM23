@@ -9,7 +9,6 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject);
         var health = other.gameObject.GetComponent<Health>();
         if (healths.Contains(health))
         {

@@ -1,9 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInput : MovementBehaviour
 {
+    public static PlayerInput instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Update()
     {
         Vector2 playerInput;

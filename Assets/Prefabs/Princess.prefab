@@ -223,6 +223,9 @@ MonoBehaviour:
   range: {fileID: 3789507827025724004}
   attackDistance: 2
   distanceFromTarget: 1
+  attackModeDuration: 3
+  attackModeCooldown: 10
+  strayDistance: 5
   wayPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -244,6 +247,7 @@ MonoBehaviour:
   maxSpeed: 2
   maxAcceleration: 5
   body: {fileID: 6221975026285820}
+  desiredVelocity: {x: 0, y: 0}
 --- !u!114 &937698322564625753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   flashController: {fileID: 3960972030447753179}
+  invincible: 0
 --- !u!135 &3221486286775184931
 SphereCollider:
   m_ObjectHideFlags: 0

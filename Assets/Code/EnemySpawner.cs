@@ -1,13 +1,43 @@
 using UnityEngine;
+
 public class EnemySpawner : MonoBehaviour
 {
-    public Enemy enemy;
+    public MinMaxFloat spawnDelay;
+    public MinMaxFloat spawnCooldown;
+    public MinMaxInt spawnAmount;
+    public float spawnRange = 5;
+
+    public Enemy enemyPrefab;
+
+    private float spawnTime;
+
+    private void Awake()
+    {
+        spawnTime = Time.time + spawnDelay.GetRandom();
+    }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Time.time < spawnTime)
         {
-            Instantiate(enemy, transform.position, Quaternion.identity);
+            return;
         }
+        SetSpawnTime();
+        var amount = spawnAmount.GetRandom();
+        for (var i = 0; i < amount; i++)
+        {
+            var random = Random.insideUnitCircle * spawnRange;
+            Instantiate(enemyPrefab, transform.position + random.To3D(), Quaternion.identity);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, spawnRange);
+    }
+
+    private void SetSpawnTime()
+    {
+        spawnTime = Time.time + spawnCooldown.GetRandom();
     }
 }

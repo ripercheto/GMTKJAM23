@@ -54,7 +54,7 @@ public class Princess : GameBehaviour
         var pos = transform.GetFlatPosition();
         HandleUpdateMovement(pos);
 
-        var attackDir = targetPos - pos;
+        var attackDir = targetPos.GetFlatPosition() - pos;
         attack.TryPerformAttack(health, attackDir);
     }
 

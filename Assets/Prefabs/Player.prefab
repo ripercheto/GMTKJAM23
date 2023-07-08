@@ -177,6 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   socket: {fileID: 73856365929833431}
+  pickUpCooldown: 0.5
 --- !u!114 &4170239038315821835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +195,7 @@ MonoBehaviour:
   power: 50
   duration: 0.1
   cooldown: 2
+  rollColor: {r: 0, g: 0, b: 1, a: 1}
 --- !u!135 &8147374349834057216
 SphereCollider:
   m_ObjectHideFlags: 0

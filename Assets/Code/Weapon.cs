@@ -7,6 +7,7 @@ public class Weapon : MonoBehaviour
     public readonly List<Health> healths = new();
     public Action<Health> actionOnEnter;
 
+    public int HitCount => healths.Count;
     private void OnTriggerEnter(Collider other)
     {
         var health = other.gameObject.GetComponent<Health>();
@@ -17,5 +18,10 @@ public class Weapon : MonoBehaviour
 
         actionOnEnter?.Invoke(health);
         healths.Add(health);
+    }
+
+    public void Clear()
+    {
+        healths.Clear();
     }
 }

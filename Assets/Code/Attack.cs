@@ -13,16 +13,32 @@ public class Attack : GameBehaviour
     private Dictionary<WeaponData, float> durability = new();
     public Action<float> onDurabilityChanged;
 
+    private void Start()
+    {
+        onDurabilityChanged?.Invoke(HasWeapon ? 1 : 0);
+    }
+
     public bool TryEquipWeapon(WeaponData weaponData)
     {
-        if (data != null)
-        {
-            Instantiate(data.prefab, transform.position, Quaternion.identity);
-        }
+        //initialize durability
         if (!durability.ContainsKey(weaponData))
         {
             durability.Add(weaponData, weaponData.durability);
         }
+        if (data == weaponData)
+        {
+            //same weapon
+            durability[data] = data.durability;
+        }
+        else
+        {
+            //different, drop
+            if (data != null)
+            {
+                Instantiate(data.prefab, transform.position, Quaternion.identity);
+            }
+        }
+
         data = weaponData;
         OnDurabilityChanged();
         return true;
@@ -50,11 +66,22 @@ public class Attack : GameBehaviour
             StopAllCoroutines();
         }
 
-        void OnDone()
+        void OnDone(bool didHit)
         {
-            durability[data] -= data.durabilityPerHit;
-            OnDurabilityChanged();
             attacker.onDeath -= OnAttackerDied;
+
+            if (!didHit)
+            {
+                return;
+            }
+            durability[data] -= data.durabilityPerHit;
+            //destroy if out of durability
+            if (durability[data] <= 0)
+            {
+                durability.Remove(data);
+                data = null;
+            }
+            OnDurabilityChanged();
         }
     }
 

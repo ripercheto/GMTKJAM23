@@ -4,34 +4,29 @@ using UnityEngine;
 
 public class EnemyRange : MonoBehaviour
 {
-    private readonly List<Transform> targets = new();
+    public float range = 2;
 
     public bool HasTargetsInRange
     {
         get
         {
-            targets.RemoveAll(x => x == null);
-            return targets.Count > 0;
+
+            var target = GetClosestTarget();
+            if (target == null)
+            {
+                return false;
+            }
+            if (Vector3.Distance(target.position, transform.position) < range)
+            {
+                return true;
+            }
+            return false;
+
         }
     }
 
     public Transform GetClosestTarget()
     {
-        return transform.GetClosestTarget(targets);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        targets.Add(other.transform);
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        targets.Remove(other.transform);
-    }
-
-    public void Clear()
-    {
-        targets.Clear();
+        return transform.GetClosestTarget(MainCharacters.targets);
     }
 }

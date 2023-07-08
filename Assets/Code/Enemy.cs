@@ -36,7 +36,6 @@ public class Enemy : GameBehaviour
 
     private void OnDeath()
     {
-        range.Clear();
         health.ResetHealth();
         EnemyPool.bat.Deactivate(this);
     }

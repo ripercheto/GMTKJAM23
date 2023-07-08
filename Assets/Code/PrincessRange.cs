@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class PrincessRange : MonoBehaviour
@@ -28,21 +29,32 @@ public class PrincessRange : MonoBehaviour
                     i--;
                     continue;
                 }
-                center = Vector3.Lerp(center, enemy.position, 0.5f);
+                center = Vector3.Lerp(center, enemy.transform.position, 0.5f);
             }
             return center;
         }
     }
 
-    public readonly List<Transform> enemies = new();
+    [ShowInInspector]
+    public readonly List<Enemy> enemies = new();
 
     private void OnTriggerEnter(Collider other)
     {
-        enemies.Add(other.transform);
+        var enemy = other.gameObject.GetComponent<Enemy>();
+        if (enemy == null)
+        {
+            return;
+        }
+        enemies.Add(enemy);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        enemies.Remove(other.transform);
+        var enemy = other.gameObject.GetComponent<Enemy>();
+        if (enemy == null)
+        {
+            return;
+        }
+        enemies.Add(enemy);
     }
 }

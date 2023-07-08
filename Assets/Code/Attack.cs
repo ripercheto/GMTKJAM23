@@ -45,7 +45,7 @@ public class Attack : GameBehaviour
         return true;
     }
 
-    public void TryPerformAttack(Health attacker, Vector3 dir)
+    public void TryPerformAttack(Health attacker, PrincessRange range)
     {
         if (!HasWeapon)
         {
@@ -57,7 +57,7 @@ public class Attack : GameBehaviour
             return;
         }
         allowedHitTime = Time.time + data.duration + data.cooldown;
-        StartCoroutine(data.PerformAttack(movement.body, dir, OnDone));
+        StartCoroutine(data.PerformAttack(movement.body, range, OnDone));
 
         attacker.onDeath += OnAttackerDied;
 

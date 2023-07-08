@@ -15,6 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 7442049561170539028, guid: dc36f6f43e5c88949895203c00ebc276, type: 3}
   weaponPrefab: {fileID: 3436212203780608517, guid: 74a3b991fa9d21f40abee86ae6dd03d9,
     type: 3}
+  melee: 0
   damage: 50
   cooldown: 1
   duration: 1

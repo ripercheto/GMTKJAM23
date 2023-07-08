@@ -8,6 +8,7 @@ public class WeaponData : BaseItemData
 {
     public Weapon weaponPrefab;
 
+    public bool melee = true;
     public float damage = 50f;
     public float cooldown = 1f;
     public float duration = 0.5f;
@@ -25,9 +26,51 @@ public class WeaponData : BaseItemData
 
     private Weapon weapon;
 
-    public IEnumerator PerformAttack(Rigidbody body, Vector3 dir, Action<bool> onDone)
+    public Vector3 GetPosRanged(PrincessRange range)
     {
-        dir.Normalize();
+        var closestRangedDistance = float.MaxValue;
+        var closesRangedPos = Vector3.zero;
+
+        var closestMeleeDistance = float.MaxValue;
+        var closesMeleePos = Vector3.zero;
+
+        foreach (var enemy in range.enemies)
+        {
+            var dist = Vector3.Distance(enemy.transform.position, range.transform.position);
+            if (enemy.useProjectile)
+            {
+                if (dist < closestRangedDistance)
+                {
+                    closestRangedDistance = dist;
+                    closesRangedPos = enemy.transform.position;
+                }
+            }
+            else
+            {
+                if (dist < closestMeleeDistance)
+                {
+                    closestMeleeDistance = dist;
+                    closesMeleePos = enemy.transform.position;
+                }
+            }
+
+        }
+        if (closesRangedPos == Vector3.zero)
+        {
+            return closesMeleePos;
+        }
+        return closesRangedPos;
+    }
+
+    public Vector3 GetPoMelee(PrincessRange range)
+    {
+        return range.CenterPosition;
+    }
+
+    public IEnumerator PerformAttack(Rigidbody body, PrincessRange range, Action<bool> onDone)
+    {
+        var targetPos = melee ? GetPoMelee(range) : GetPosRanged(range);
+        var dir = (targetPos - body.position).GetFlatPosition().normalized;
         var halfAngle = attackAngle * 0.5f;
         var startRotation = Quaternion.LookRotation(dir, Vector3.up);
 

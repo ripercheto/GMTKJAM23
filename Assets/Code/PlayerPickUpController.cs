@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerPickUpController : MonoBehaviour
 {
     public Transform socket;
+    public float pickUpCooldown = 0.1f;
     private float pickUpTime;
     private ItemPickup pickedUpItem;
 
@@ -59,20 +60,28 @@ public class PlayerPickUpController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         var princess = collision.gameObject.GetComponent<Princess>();
-        if (princess != null)
+        if (princess == null)
         {
-            if (pickedUpItem != null)
-            {
-                if (pickedUpItem.TryGivePrincess())
-                {
-                    DestroyItem();
-                }
-                else
-                {
-                    DropItem();
-                }
-            }
+            return;
+        }
+        if (pickedUpItem == null)
+        {
+            return;
+        }
+        if (pickedUpItem.TryGivePrincess())
+        {
+            DestroyItem();
+        }
+        else
+        {
+            DropItem();
+        }
+    }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (Time.time < pickUpTime)
+        {
             return;
         }
         var pickUp = collision.gameObject.GetComponent<ItemPickup>();
@@ -82,5 +91,6 @@ public class PlayerPickUpController : MonoBehaviour
         }
 
         PickUp(pickUp);
+        pickUpTime = Time.time + pickUpCooldown;
     }
 }

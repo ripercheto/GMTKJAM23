@@ -21,7 +21,7 @@ public class Princess : GameBehaviour
 
     public float attackDistance = 2;
     public float distanceFromTarget = 1;
-    public float distanceFromWaypoint = 2;
+    public float distanceFromPath = 2;
     public float attackModeDuration = 5;
     public float attackModeCooldown = 5;
     public float strayDistance = 5;
@@ -63,7 +63,7 @@ public class Princess : GameBehaviour
     void HandleUpdateMovement(Vector3 pos)
     {
         wayPointPos = CurrentWaypoint.GetFlatPosition();
-        closestPosOnPath = FindClosestPointOnEdge(pos, state != State.FollowingPath);
+        closestPosOnPath = FindClosestPointOnEdge(pos, state == State.Attacking || state == State.ComingToPlayer);
         targetPosOnPath = closestPosOnPath + Vector3.ClampMagnitude(wayPointPos - targetPosOnPath, 2);
         targetPos = Vector3.zero;
         switch (state)
@@ -107,7 +107,7 @@ public class Princess : GameBehaviour
                     }
                 }
 
-                if (Vector3.Distance(pos, wayPointPos) < distanceFromWaypoint)
+                if (Vector3.Distance(pos, wayPointPos) < distanceFromPath)
                 {
                     wayPointIndex++;
                     if (wayPointIndex >= wayPoints.Length)
@@ -147,13 +147,13 @@ public class Princess : GameBehaviour
                 break;
             case State.ReturningToPath:
             {
+                if (Vector3.Distance(pos, closestPosOnPath) < distanceFromPath)
+                {
+                    state = State.FollowingPath;
+                }
                 if (!attack.HasWeapon)
                 {
                     state = State.ComingToPlayer;
-                }
-                else if (Vector3.Distance(pos, targetPosOnPath) < distanceFromTarget)
-                {
-                    state = State.FollowingPath;
                 }
 
                 targetPos = closestPosOnPath;

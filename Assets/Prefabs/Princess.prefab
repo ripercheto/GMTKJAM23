@@ -220,8 +220,8 @@ MonoBehaviour:
   movement: {fileID: 1439740870311606528}
   attack: {fileID: 937698322564625753}
   range: {fileID: 3789507827025724004}
-  attackDistance: 1
-  distanceFromWayPoint: 1
+  attackDistance: 2
+  distanceFromTarget: 1
   wayPoints:
   - {fileID: 0}
   - {fileID: 0}

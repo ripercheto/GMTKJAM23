@@ -5,7 +5,14 @@ using UnityEngine;
 
 public class PrincessRange : MonoBehaviour
 {
-    public bool HasEnemiesInRange => enemies.Count > 0;
+    public bool HasEnemiesInRange
+    {
+        get
+        {
+            enemies.RemoveAll(x => x == null);
+            return enemies.Count > 0;
+        }
+    }
 
     public Vector3 CenterPosition
     {

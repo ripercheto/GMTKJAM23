@@ -10,8 +10,8 @@ public class Princess : MovementBehaviour
     public Attack attack;
     public PrincessRange range;
 
-    public float attackDistance = 1;
-    public float distanceFromWayPoint = 1;
+    public float attackDistance = 2;
+    public float distanceFromTarget = 1;
     public Transform[] wayPoints;
 
     private Transform CurrentWaypoint => wayPoints[wayPointIndex];
@@ -25,22 +25,9 @@ public class Princess : MovementBehaviour
 
     private void Update()
     {
-
         var pos = transform.GetFlatPosition();
-        if (range.HasEnemiesInRange)
-        {
-            var enemyPos = range.CenterPosition;
-            var dir = enemyPos - pos;
-            if (Vector3.Distance(pos, enemyPos) > attackDistance)
-            {
-                movement.UpdateDesiredVelocity(dir);
-            }
-            attack.TryPerformAttack(dir.normalized);
-            return;
-        }
-
-        var targetPos = CurrentWaypoint.GetFlatPosition();
-        if (Vector3.Distance(pos, targetPos) > distanceFromWayPoint)
+        var targetPos = GetTargetPosition();
+        if (Vector3.Distance(pos, targetPos) > distanceFromTarget)
         {
             var dir = targetPos - pos;
             movement.UpdateDesiredVelocity(dir);
@@ -54,7 +41,21 @@ public class Princess : MovementBehaviour
             }
         }
 
-        var dashDir = pos - lastPosition;
-        lastPosition = pos;
+        var attackDir = targetPos - pos;
+        attack.TryPerformAttack(attackDir);
+
+        Vector3 GetTargetPosition()
+        {
+            if (range.HasEnemiesInRange)
+            {
+                var enemyPos = range.CenterPosition;
+                var dir = enemyPos - pos;
+                var enemyTargetPos = enemyPos - dir.normalized * attackDistance;
+                Debug.DrawLine(pos, enemyTargetPos);
+                return enemyTargetPos;
+            }
+
+            return CurrentWaypoint.GetFlatPosition();
+        }
     }
 }

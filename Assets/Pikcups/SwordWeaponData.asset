@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 3502997925512838992, guid: a15c0479cdc36294b93fcd294eedfd8f, type: 3}
   weaponPrefab: {fileID: 3436212203780608517, guid: e9a71359018037946ab0a8d7d9b57842,
     type: 3}
-  damage: 50
-  duration: 0.5
-  attackAngle: 180
+  damage: 300
+  duration: 1
+  attackAngle: 420
   cooldown: 1

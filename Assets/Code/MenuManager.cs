@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,12 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     public GameObject PauseMenu;
-    
+
+    private void Awake()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void Pause()
     {
         Time.timeScale = 0f;

@@ -21,6 +21,7 @@ public class Princess : GameBehaviour
     private void Awake()
     {
         instance = this;
+        MainCharacters.AddToMainCharacters(this);
         health.onDeath += OnDeath;
     }
 

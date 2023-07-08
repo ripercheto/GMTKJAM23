@@ -30,11 +30,17 @@ public class Attack : GameBehaviour
         {
             var halfAngle = attackAngle * 0.5f;
             var startRotation = Quaternion.LookRotation(dir, Vector3.up);
-            
+
             weapon = Instantiate(weaponPrefab, transform.position, startRotation * Quaternion.AngleAxis(-halfAngle, Vector3.up));
             weapon.actionOnEnter = (x) => x.TakeDamage(damage);
-            attacker.onDeath += () => Destroy(weapon.gameObject);
-            
+            attacker.onDeath += OnAttackerDied;
+
+            void OnAttackerDied()
+            {
+                Destroy(weapon.gameObject);
+                StopAllCoroutines();
+            }
+
             var t = 0f;
             while (t < 1f)
             {
@@ -44,6 +50,8 @@ public class Attack : GameBehaviour
                 weapon.body.MovePosition(movement.body.position);
                 weapon.body.MoveRotation(startRotation * Quaternion.AngleAxis(angle, Vector3.up));
             }
+            
+            attacker.onDeath -= OnAttackerDied;
             Destroy(weapon.gameObject);
         }
     }

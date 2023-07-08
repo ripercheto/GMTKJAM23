@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -8,13 +10,16 @@ public class EnemySpawner : MonoBehaviour
     public MinMaxInt spawnAmount;
     public float spawnRange = 5;
 
-    public Enemy enemyPrefab;
-
     private float spawnTime;
 
     private void Awake()
     {
         spawnTime = Time.time + spawnDelay.GetRandom();
+    }
+
+    private void Start()
+    {
+        MainCharacters.onMainDeath += () => enabled = false;
     }
 
     private void Update()

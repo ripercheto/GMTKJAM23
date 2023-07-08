@@ -6,7 +6,8 @@ using UnityEngine;
 public class PrefabPool<T> : MonoBehaviour where T : MonoBehaviour
 {
     public T prefab;
-
+    public int framesBetweenSpawns = 1;
+    
     private Queue<Vector3> spawnQueue = new Queue<Vector3>();
     private List<T> activeObjects = new List<T>();
     private Queue<T> inactiveObjects = new Queue<T>();
@@ -24,7 +25,7 @@ public class PrefabPool<T> : MonoBehaviour where T : MonoBehaviour
 
     private void Update()
     {
-        if (Time.frameCount % 2 != 0)
+        if (Time.frameCount % (framesBetweenSpawns + 1) != 0)
         {
             return;
         }

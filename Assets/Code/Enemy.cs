@@ -12,7 +12,6 @@ public class Enemy : GameBehaviour
     private Vector3? endDirection;
 
     private Transform closestTarget;
-    private List<Transform> targets;
 
     private bool CanAttack => Time.time > attackTime;
 
@@ -29,20 +28,7 @@ public class Enemy : GameBehaviour
 
     private void Start()
     {
-        targets = new();
-
-        if (Princess.instance != null)
-        {
-            Princess.instance.health.onDeath += OnMainDeath;
-            targets.Add(Princess.instance.transform);
-        }
-
-        if (PlayerInput.instance != null)
-        {
-            PlayerInput.instance.health.onDeath += OnMainDeath;
-            targets.Add(PlayerInput.instance.transform);
-        }
-
+        MainCharacters.onMainDeath += OnMainDeath;
         CheckIfTargetsDead();
     }
 
@@ -71,7 +57,7 @@ public class Enemy : GameBehaviour
         {
             return;
         }
-        closestTarget = transform.GetClosestTarget(targets);
+        closestTarget = transform.GetClosestTarget(MainCharacters.targets);
     }
 
     private void OnMainDeath()
@@ -82,7 +68,7 @@ public class Enemy : GameBehaviour
 
     private void CheckIfTargetsDead()
     {
-        if (deadTargets >= targets.Count)
+        if (deadTargets >= MainCharacters.targets.Count)
         {
             endDirection = Random.insideUnitCircle.To3D().normalized;
         }

@@ -11,6 +11,8 @@ public class PlayerInput : GameBehaviour
 
     private void Awake()
     {
+        MainCharacters.AddToMainCharacters(this);
+        
         health.onDeath += () => Destroy(gameObject);
         Princess.instance.health.onDeath += OnPrincessDeath;
         instance = this;

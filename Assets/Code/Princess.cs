@@ -6,8 +6,11 @@ using UnityEngine;
 public class Princess : MovementBehaviour
 {
     public static Princess instance;
-    
+
     public Attack attack;
+    public PrincessRange range;
+
+    public float attackDistance = 1;
     public float distanceFromWayPoint = 1;
     public Transform[] wayPoints;
 
@@ -22,7 +25,20 @@ public class Princess : MovementBehaviour
 
     private void Update()
     {
+
         var pos = transform.GetFlatPosition();
+        if (range.HasEnemiesInRange)
+        {
+            var enemyPos = range.CenterPosition;
+            var dir = enemyPos - pos;
+            if (Vector3.Distance(pos, enemyPos) > attackDistance)
+            {
+                movement.UpdateDesiredVelocity(dir);
+            }
+            attack.TryPerformAttack(dir.normalized);
+            return;
+        }
+
         var targetPos = CurrentWaypoint.GetFlatPosition();
         if (Vector3.Distance(pos, targetPos) > distanceFromWayPoint)
         {
@@ -39,7 +55,6 @@ public class Princess : MovementBehaviour
         }
 
         var dashDir = pos - lastPosition;
-        attack.TryPerformAttack(dashDir.normalized);
         lastPosition = pos;
     }
 }

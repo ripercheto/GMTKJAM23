@@ -19,6 +19,7 @@ public class PlayerInput : GameBehaviour
     private void OnPrincessDeath()
     {
         princessDead = true;
+        movement.UpdateDesiredVelocity(Vector3.zero);
     }
 
     void Update()

@@ -52,8 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 4503998756163005961}
   health: {fileID: 6069384397602350890}
-  projectile: {fileID: 6795716692329985664, guid: 1cfb0daf8e5822743a91617a9ab70d64,
-    type: 3}
+  useProjectile: 1
   range: {fileID: 6545621450597398687}
   attackStopDistance: 5
   attackStopDistanceHalfDeadZone: 0.5

@@ -11,7 +11,7 @@ public enum EnemyType
 
 public class Enemy : GameBehaviour
 {
-    public EnemyProjectile projectile;
+    public bool useProjectile;
     public EnemyRange range;
     public float attackStopDistance = 0;
     public float attackStopDistanceHalfDeadZone = 0.5f;
@@ -120,10 +120,9 @@ public class Enemy : GameBehaviour
 
         var dir = (health.transform.position - transform.position).normalized;
 
-        if (projectile != null)
+        if (useProjectile)
         {
-            var instance = Instantiate(projectile, transform.position, Quaternion.identity);
-            instance.Launch(dir, attackDamage);
+            EnemyProjectilePool.instance.Activate(transform.position, (x)=> x.Launch(dir, attackDamage));
         }
         else
         {

@@ -46,7 +46,7 @@ public class Princess : GameBehaviour
 
     private void OnDeath()
     {
-        SceneManager.LoadScene("Game Over");;
+        Destroy(gameObject);
     }
 
     private void Update()

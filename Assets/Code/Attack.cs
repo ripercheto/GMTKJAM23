@@ -20,15 +20,25 @@ public class Attack : GameBehaviour
 
     public bool TryEquipWeapon(WeaponData weaponData)
     {
-        if (data != null)
-        {
-            Instantiate(data.prefab, transform.position, Quaternion.identity);
-        }
         //initialize durability
         if (!durability.ContainsKey(weaponData))
         {
             durability.Add(weaponData, weaponData.durability);
         }
+        if (data == weaponData)
+        {
+            //same weapon
+            durability[data] = data.durability;
+        }
+        else
+        {
+            //different, drop
+            if (data != null)
+            {
+                Instantiate(data.prefab, transform.position, Quaternion.identity);
+            }
+        }
+
         data = weaponData;
         OnDurabilityChanged();
         return true;

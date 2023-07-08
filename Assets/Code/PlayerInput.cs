@@ -7,6 +7,7 @@ public class PlayerInput : GameBehaviour
 {
     public static PlayerInput instance;
 
+    public PlayerPickUpController pickUpController;
     private bool princessDead;
 
     private void Awake()
@@ -33,6 +34,11 @@ public class PlayerInput : GameBehaviour
         {
             return;
         }
+        if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1"))
+        {
+            pickUpController.TryUseItem();
+        }
+        
         Vector2 playerInput;
         playerInput.x = Input.GetAxis("Horizontal");
         playerInput.y = Input.GetAxis("Vertical");

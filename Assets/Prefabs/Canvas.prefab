@@ -103,7 +103,7 @@ RectTransform:
   - {fileID: 6362677583638262623}
   - {fileID: 5580243532939564701}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -186,7 +186,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  target: {fileID: 0}
   element: {fileID: 6362677583638262623}
   canvasRectTransform: {fileID: 5883012194462170889}
 --- !u!1 &8478319886842532322
@@ -255,7 +254,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 53c3bde33e9ce064594ae503a33cd737, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6ba02b9e45710648b58568cf99ae50f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

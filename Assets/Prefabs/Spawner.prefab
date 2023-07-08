@@ -37,7 +37,7 @@ Transform:
   - {fileID: 7970735965044808158}
   - {fileID: 4775307427702448028}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1236502265970976805
 MonoBehaviour:
@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b1eb9918b353b419aa34cbdebedb4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
   spawnDelay:
     min: 2
     max: 4
@@ -59,10 +60,8 @@ MonoBehaviour:
     max: 20
   spawnAmount:
     min: 5
-    max: 10
+    max: 8
   spawnRange: 5
-  enemyPrefab: {fileID: 1371331871855872232, guid: 39183166f85fe8a43bc8e7bdf53be96b,
-    type: 3}
 --- !u!1 &1610971975223128577
 GameObject:
   m_ObjectHideFlags: 0

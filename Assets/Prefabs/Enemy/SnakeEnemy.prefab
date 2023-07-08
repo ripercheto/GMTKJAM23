@@ -53,6 +53,7 @@ MonoBehaviour:
   movement: {fileID: 4503998756163005961}
   health: {fileID: 6069384397602350890}
   range: {fileID: 6253728608169192018}
+  attackStopDistance: 5
   attackCooldown: 5
   attackDamage: 2
 --- !u!114 &4503998756163005961
@@ -70,6 +71,7 @@ MonoBehaviour:
   maxSpeed: 2.5
   maxAcceleration: 100
   body: {fileID: 4652309524286351648}
+  desiredVelocity: {x: 0, y: 0}
 --- !u!114 &6069384397602350890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   flashController: {fileID: 9193469994657593402}
+  invincible: 0
 --- !u!135 &8147374349834057216
 SphereCollider:
   m_ObjectHideFlags: 0

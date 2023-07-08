@@ -2,9 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType
+{
+    Invalid,
+    Bat,
+    Snake
+}
+
 public class Enemy : GameBehaviour
 {
     public EnemyRange range;
+    public float attackStopDistance = 0;
+    public float attackStopDistanceHalfDeadZone = 0.5f;
     public float attackCooldown = 1;
     public float attackDamage = 10;
     private float attackTime;
@@ -29,7 +38,7 @@ public class Enemy : GameBehaviour
     {
         range.Clear();
         health.ResetHealth();
-        EnemyPool.instance.Deactivate(this);
+        EnemyPool.bat.Deactivate(this);
     }
 
     private void Start()
@@ -53,7 +62,19 @@ public class Enemy : GameBehaviour
         if (closestTarget != null)
         {
             var dir = closestTarget.position - pos;
-            movement.UpdateDesiredVelocity(dir);
+            var distance = dir.magnitude;
+            if (distance < attackStopDistance - attackStopDistanceHalfDeadZone)
+            {
+                movement.UpdateDesiredVelocity(-dir);
+            }
+            else if (distance < attackStopDistance + attackStopDistanceHalfDeadZone)
+            {
+                movement.UpdateDesiredVelocity(Vector3.zero);
+            }
+            else
+            {
+                movement.UpdateDesiredVelocity(dir);
+            }
         }
     }
 

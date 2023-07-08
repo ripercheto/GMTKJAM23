@@ -20,6 +20,11 @@ public class Enemy : GameBehaviour
         health.onDeath += OnDeath;
     }
 
+    private void OnEnable()
+    {
+        attackTime = Time.time + attackCooldown;
+    }
+
     private void OnDeath()
     {
         health.ResetHealth();
@@ -90,6 +95,7 @@ public class Enemy : GameBehaviour
         {
             return;
         }
+        
         health.TakeDamage(attackDamage);
         attackTime = Time.time + attackCooldown;
     }

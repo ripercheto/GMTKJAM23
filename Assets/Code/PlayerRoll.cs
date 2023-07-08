@@ -7,7 +7,7 @@ public class PlayerRoll : GameBehaviour
     public float power = 5;
     public float duration = 0.1f;
     public float cooldown = 5;
-    
+    public Color rollColor = Color.blue;
     private float dashTime;
 
     public void TryRoll(Vector3 dir)
@@ -19,7 +19,7 @@ public class PlayerRoll : GameBehaviour
 
         var playerLayer = LayerMask.NameToLayer("Player");
         var enemyLayer = LayerMask.NameToLayer("Enemy");
-
+        health.flashController.SetFlashActive(true, rollColor);
         Physics.IgnoreLayerCollision(playerLayer, enemyLayer, true);
         health.invincible = true;
         movement.StartDash(dir, power, duration, OnDone);
@@ -29,6 +29,7 @@ public class PlayerRoll : GameBehaviour
         {
             health.invincible = false;
             Physics.IgnoreLayerCollision(playerLayer, enemyLayer, false);
+            health.flashController.SetFlashActive(false, rollColor);
         }
     }
 }

@@ -26,6 +26,14 @@ public class FlashController : MonoBehaviour
         rend.SetPropertyBlock(propertyBlock);
     }
 
+    public void SetFlashActive(bool active, Color color)
+    {
+        rend.GetPropertyBlock(propertyBlock);
+        propertyBlock.SetFloat("_FlashAmount", active ? 1 : 0);
+        propertyBlock.SetColor("_FlashColor", color);
+        rend.SetPropertyBlock(propertyBlock);
+    }
+
     public void Flash(Color color)
     {
         StopAllCoroutines();

@@ -427,7 +427,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '000
+  m_text: '{000}
 
 '
   m_isRightToLeft: 0
@@ -783,6 +783,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6526149134601063333}
   - component: {fileID: 455836871790137472}
+  - component: {fileID: 7855696306874942359}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -819,6 +820,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5821235536108704597}
   m_CullTransparentMesh: 1
+--- !u!114 &7855696306874942359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5821235536108704597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba0c915c78159d548a9d47a6f008ad45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Score: {fileID: 5275924490364303698}
 --- !u!1 &6287623142912684175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,7 +1337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dce4b16741b7024395527b8bff4da5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
   element: {fileID: 6362677583638262623}
   canvasRectTransform: {fileID: 5883012194462170889}
 --- !u!1 &8478319886842532322

@@ -18,6 +18,7 @@ public class Enemy : GameBehaviour
     public float attackStopDistanceHalfDeadZone = 0.5f;
     public float attackCooldown = 1;
     public float attackDamage = 10;
+    public int scoreIncrease = 1;
     private float attackTime;
     private int deadTargets;
     private Vector3? endDirection;
@@ -45,6 +46,7 @@ public class Enemy : GameBehaviour
 
     private void OnDeath()
     {
+        ScoreCounter.onScoreChanged(scoreIncrease);
         var particlePool = ParticlePool.Get(ParticleType.Death);
         particlePool.Activate(transform.position + particleOffset, (x) => x.Play());
         health.ResetHealth();

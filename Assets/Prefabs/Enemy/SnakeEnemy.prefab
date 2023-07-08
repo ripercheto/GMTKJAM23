@@ -59,6 +59,7 @@ MonoBehaviour:
   attackStopDistanceHalfDeadZone: 0.5
   attackCooldown: 4
   attackDamage: 2
+  scoreIncrease: 3
 --- !u!114 &4503998756163005961
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 64099513407565111}
   - component: {fileID: 5554315391805390879}
+  - component: {fileID: 3960972030447753179}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -52,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fab400d293b091446b3a9965d9c1c66e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,6 +85,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3960972030447753179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303974109980333138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9edeb93b160f3c4ba00820d9d773676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 5554315391805390879}
+  delay: 0.1
+  restoreDuration: 0.1
 --- !u!1 &3954922187320904132
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  flashController: {fileID: 3960972030447753179}
 --- !u!135 &3221486286775184931
 SphereCollider:
   m_ObjectHideFlags: 0

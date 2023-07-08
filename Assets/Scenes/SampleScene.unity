@@ -308,6 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1371331871855872232, guid: 39183166f85fe8a43bc8e7bdf53be96b, type: 3}
   framesBetweenSpawns: 1
+  type: 1
 --- !u!4 &448311500
 Transform:
   m_ObjectHideFlags: 0
@@ -402,6 +403,53 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5624617156696276000}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1338375411
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1338375413}
+  - component: {fileID: 1338375412}
+  m_Layer: 0
+  m_Name: SnakePool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1338375412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338375411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5bef5deaf9776479eeac81f9a53008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1371331871855872232, guid: 38b4a01453d4077418f5b4237ff0842a, type: 3}
+  framesBetweenSpawns: 1
+  type: 2
+--- !u!4 &1338375413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338375411}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1392878522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2090170083505735444, guid: f7400ef23c4ed594c9467908beb2fd53,
@@ -462,7 +510,7 @@ PrefabInstance:
     - target: {fileID: 5883012194462170889, guid: 004199c63b99f27438c4ad817efa2201,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5883012194462170889, guid: 004199c63b99f27438c4ad817efa2201,
         type: 3}
@@ -864,12 +912,12 @@ PrefabInstance:
     - target: {fileID: 1409265996713511839, guid: cb136e3b29940114f94345b5bcd43460,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.943481
+      value: 17.94348
       objectReference: {fileID: 0}
     - target: {fileID: 1409265996713511839, guid: cb136e3b29940114f94345b5bcd43460,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -26.406158
+      value: -26.40616
       objectReference: {fileID: 0}
     - target: {fileID: 3579144284445329779, guid: cb136e3b29940114f94345b5bcd43460,
         type: 3}
@@ -929,12 +977,12 @@ PrefabInstance:
     - target: {fileID: 3820136096899016503, guid: cb136e3b29940114f94345b5bcd43460,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.943481
+      value: 17.94348
       objectReference: {fileID: 0}
     - target: {fileID: 3820136096899016503, guid: cb136e3b29940114f94345b5bcd43460,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -26.406158
+      value: -26.40616
       objectReference: {fileID: 0}
     - target: {fileID: 4054329203492501551, guid: cb136e3b29940114f94345b5bcd43460,
         type: 3}

@@ -5,12 +5,14 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public EnemyType type = EnemyType.Bat;
     public MinMaxFloat spawnDelay;
     public MinMaxFloat spawnCooldown;
     public MinMaxInt spawnAmount;
     public float spawnRange = 5;
 
     private float spawnTime;
+    private EnemyPool pool;
 
     private void Awake()
     {
@@ -19,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        pool = EnemyPool.Get(type);
         MainCharacters.onMainDeath += OnMainDeath;
     }
 
@@ -43,7 +46,7 @@ public class EnemySpawner : MonoBehaviour
         for (var i = 0; i < amount; i++)
         {
             var random = Random.insideUnitCircle * spawnRange;
-            EnemyPool.instance.Activate(transform.position + random.To3D());
+            pool.Activate(transform.position + random.To3D());
         }
     }
 

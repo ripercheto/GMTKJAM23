@@ -29,7 +29,6 @@ public class Princess : GameBehaviour
 
     private Transform CurrentWaypoint => wayPoints[wayPointIndex];
     private int wayPointIndex;
-    private Vector3 targetPosOnPath;
     private Vector3 targetPos;
     private Vector3 closestPosOnPath;
     private Vector3 wayPointPos;
@@ -42,7 +41,6 @@ public class Princess : GameBehaviour
         instance = this;
         MainCharacters.AddToMainCharacters(this);
         health.onDeath += OnDeath;
-        targetPosOnPath = CurrentWaypoint.position;
         state = State.FollowingPath;
     }
 
@@ -63,8 +61,7 @@ public class Princess : GameBehaviour
     void HandleUpdateMovement(Vector3 pos)
     {
         wayPointPos = CurrentWaypoint.GetFlatPosition();
-        closestPosOnPath = FindClosestPointOnEdge(pos, state == State.Attacking || state == State.ComingToPlayer);
-        targetPosOnPath = closestPosOnPath + Vector3.ClampMagnitude(wayPointPos - targetPosOnPath, 2);
+        closestPosOnPath = FindClosestPointOnEdge(pos, false);
         targetPos = Vector3.zero;
         switch (state)
         {
@@ -93,7 +90,7 @@ public class Princess : GameBehaviour
                 break;
             case State.FollowingPath:
             {
-                targetPos = targetPosOnPath;
+                targetPos = wayPointPos;
                 if (!attack.HasWeapon)
                 {
                     state = State.ComingToPlayer;
@@ -138,7 +135,7 @@ public class Princess : GameBehaviour
                     break;
                 }
                 //distance from last point while on path
-                if (Vector3.Distance(pos, targetPosOnPath) > strayDistance || Time.time > attackModeTime)
+                if (Vector3.Distance(pos, closestPosOnPath) > strayDistance || Time.time > attackModeTime)
                 {
                     state = State.ReturningToPath;
                     attackModeTime = Time.time + attackModeCooldown;
@@ -180,7 +177,7 @@ public class Princess : GameBehaviour
         }
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(targetPosOnPath, 0.5f);
+        Gizmos.DrawWireSphere(closestPosOnPath, 0.5f);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(targetPos, 0.5f);
         Gizmos.color = Color.yellow;

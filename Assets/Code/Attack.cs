@@ -12,7 +12,8 @@ public class Attack : GameBehaviour
 
     private Dictionary<WeaponData, float> durability = new();
     public Action<float> onDurabilityChanged;
-    public float Durability => data == null ? 0 : durability[data];
+    public float DurabilityAlpha => data == null ? 0 : durability[data] / data.durability;
+
     private void Start()
     {
         onDurabilityChanged?.Invoke(HasWeapon ? 1 : 0);
@@ -87,6 +88,6 @@ public class Attack : GameBehaviour
 
     private void OnDurabilityChanged()
     {
-        onDurabilityChanged?.Invoke(Durability);
+        onDurabilityChanged?.Invoke(DurabilityAlpha);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attack : MovementBehaviour
+public class Attack : GameBehaviour
 {
     public Weapon weaponPrefab;
 

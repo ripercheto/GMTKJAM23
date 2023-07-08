@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -23,11 +24,17 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
         SetSpawnTime();
+        StartCoroutine(SpawnRoutine());
+    }
+
+    IEnumerator SpawnRoutine()
+    {
         var amount = spawnAmount.GetRandom();
         for (var i = 0; i < amount; i++)
         {
             var random = Random.insideUnitCircle * spawnRange;
             Instantiate(enemyPrefab, transform.position + random.To3D(), Quaternion.identity);
+            yield return null;
         }
     }
 

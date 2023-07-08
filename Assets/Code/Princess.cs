@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Princess : MovementBehaviour
+public class Princess : GameBehaviour
 {
     public static Princess instance;
 
@@ -21,6 +21,12 @@ public class Princess : MovementBehaviour
     private void Awake()
     {
         instance = this;
+        health.onDeath += OnDeath;
+    }
+
+    private void OnDeath()
+    {
+        Destroy(gameObject);
     }
 
     private void Update()

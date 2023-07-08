@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
     public float maxHealth = 100;
     public FlashController flashController;
     private float currentHealth;
+    public event Action onDeath;
+    public bool IsAlive => currentHealth > 0;
 
     private void Awake()
     {
@@ -16,11 +18,15 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        if (!IsAlive)
+        {
+            return;
+        }
         currentHealth -= amount;
         flashController.Flash();
         if (currentHealth < 0)
         {
-            Destroy(gameObject);
+            onDeath?.Invoke();
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyRange : MonoBehaviour
 {
+    private readonly List<Transform> targets = new();
     public bool HasTargetsInRange
     {
         get
@@ -15,21 +16,9 @@ public class EnemyRange : MonoBehaviour
 
     public Transform GetClosestTarget()
     {
-        var closestDistance = float.MaxValue;
-        Transform closestTarget = null;
-        foreach (var target in targets)
-        {
-            var distance = (target.position - transform.position).sqrMagnitude;
-            if (distance < closestDistance)
-            {
-                closestTarget = target;
-            }
-        }
-        return closestTarget;
+        return transform.GetClosestTarget(targets);
     }
-
-    private readonly List<Transform> targets = new();
-
+    
     private void OnTriggerEnter(Collider other)
     {
         targets.Add(other.transform);

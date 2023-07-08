@@ -48,13 +48,13 @@ public class WeaponData : BaseItemData
         }
     }
 
-    public override bool OnTryPlayerUse(PlayerInput player, ItemPickup pickup)
+    public override bool OnTryPlayerUse(PlayerInput player)
     {
         return false;
     }
 
-    public override bool OnTryGivePrincess(Princess princess, ItemPickup pickup)
+    public override bool OnTryGivePrincess(Princess princess)
     {
-        return princess.attack.TryEquipWeapon(pickup);
+        return princess.attack.TryEquipWeapon(this);
     }
 }

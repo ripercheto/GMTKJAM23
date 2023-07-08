@@ -8,23 +8,15 @@ public class Attack : GameBehaviour
     private WeaponData data;
     private Weapon weapon;
     private float allowedHitTime;
-    private ItemPickup lastPickup;
     public bool HasWeapon => data != null;
 
-    public bool TryEquipWeapon(ItemPickup pickup)
+    public bool TryEquipWeapon(WeaponData weaponData)
     {
-        if (pickup.itemData is not WeaponData weaponData)
+        if (data != null)
         {
-            return false;
-        }
-        if (lastPickup != null)
-        {
-            lastPickup.transform.position = transform.position;
-            lastPickup.gameObject.SetActive(true);
+            Instantiate(data.prefab, transform.position, Quaternion.identity);
         }
         data = weaponData;
-        lastPickup = pickup;
-        lastPickup.gameObject.SetActive(false);
         return true;
     }
 

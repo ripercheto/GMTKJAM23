@@ -14,11 +14,11 @@ public class ItemPickup : MonoBehaviour
 
     public bool TryGivePlayer()
     {
-        return itemData.TryPlayerUse(this);
+        return itemData.TryPlayerUse();
     }
 
     public bool TryGivePrincess()
     {
-        return itemData.TryGivePrincess(this);
+        return itemData.TryGivePrincess();
     }
 }

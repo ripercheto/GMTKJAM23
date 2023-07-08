@@ -26,28 +26,29 @@ public class FlashController : MonoBehaviour
         rend.SetPropertyBlock(propertyBlock);
     }
 
-    public void Flash()
+    public void Flash(Color color)
     {
         StopAllCoroutines();
         StartCoroutine(FlashCoroutine());
-    }
 
-    private IEnumerator FlashCoroutine()
-    {
-        rend.GetPropertyBlock(propertyBlock);
-        propertyBlock.SetFloat("_FlashAmount", 1);
-        rend.SetPropertyBlock(propertyBlock);
-        yield return new WaitForSeconds(delay);
-        var t = 0f;
-        while (t < 1)
+        IEnumerator FlashCoroutine()
         {
-            t += Time.deltaTime / restoreDuration;
-            propertyBlock.SetFloat("_FlashAmount", 1 - t);
+            rend.GetPropertyBlock(propertyBlock);
+            propertyBlock.SetFloat("_FlashAmount", 1);
+            propertyBlock.SetColor("_FlashColor", color);
             rend.SetPropertyBlock(propertyBlock);
-            yield return null;
-        }
+            yield return new WaitForSeconds(delay);
+            var t = 0f;
+            while (t < 1)
+            {
+                t += Time.deltaTime / restoreDuration;
+                propertyBlock.SetFloat("_FlashAmount", 1 - t);
+                rend.SetPropertyBlock(propertyBlock);
+                yield return null;
+            }
 
-        propertyBlock.SetFloat("_FlashAmount", 0);
-        rend.SetPropertyBlock(propertyBlock);
+            propertyBlock.SetFloat("_FlashAmount", 0);
+            rend.SetPropertyBlock(propertyBlock);
+        }
     }
 }

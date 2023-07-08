@@ -5,24 +5,26 @@ using UnityEngine;
 
 public abstract class BaseItemData : ScriptableObject
 {
-    public bool TryPlayerUse(ItemPickup pickup)
+    public ItemPickup prefab;
+    
+    public bool TryPlayerUse()
     {
         if (!MainCharacters.TryGetPlayer(out var player))
         {
             return false;
         }
-        return OnTryPlayerUse(player, pickup);
+        return OnTryPlayerUse(player);
     }
 
-    public bool TryGivePrincess(ItemPickup pickup)
+    public bool TryGivePrincess()
     {
         if (!MainCharacters.TryGetPrincess(out var princess))
         {
             return false;
         }
-        return OnTryGivePrincess(princess, pickup);
+        return OnTryGivePrincess(princess);
     }
 
-    public abstract bool OnTryPlayerUse(PlayerInput player, ItemPickup pickup);
-    public abstract bool OnTryGivePrincess(Princess princess, ItemPickup pickup);
+    public abstract bool OnTryPlayerUse(PlayerInput player);
+    public abstract bool OnTryGivePrincess(Princess princess);
 }

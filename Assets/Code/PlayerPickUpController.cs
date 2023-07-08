@@ -65,6 +65,11 @@ public class PlayerPickUpController : MonoBehaviour
             {
                 if (pickedUpItem.TryGivePrincess())
                 {
+                    DestroyItem();
+                }
+                else
+                {
+                    DropItem();
                 }
             }
 

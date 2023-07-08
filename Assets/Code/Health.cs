@@ -8,10 +8,10 @@ public class Health : MonoBehaviour
 {
     public float maxHealth = 100;
     public FlashController flashController;
-    
+
     [ShowInInspector, ReadOnly]
     private float currentHealth;
-    
+
     public event Action onDeath;
     public bool IsAlive => currentHealth > 0;
 
@@ -23,7 +23,7 @@ public class Health : MonoBehaviour
     public void ResetHealth()
     {
         currentHealth = maxHealth;
-        flashController.ResetFlash();   
+        flashController.ResetFlash();
     }
 
     public void TakeDamage(float amount)
@@ -33,7 +33,7 @@ public class Health : MonoBehaviour
             return;
         }
         currentHealth -= amount;
-        flashController.Flash();
+        flashController.Flash(amount > 0 ? Color.white : Color.green);
         if (currentHealth <= 0)
         {
             onDeath?.Invoke();

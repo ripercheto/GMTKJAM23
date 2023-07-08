@@ -53,6 +53,14 @@ public class Princess : GameBehaviour
 
         Vector3 GetTargetPosition()
         {
+            if (!attack.HasWeapon)
+            {
+                if (!MainCharacters.TryGetPlayer(out var player))
+                {
+                    return Vector3.zero;
+                }
+                return player.transform.position;
+            }
             if (range.HasEnemiesInRange)
             {
                 var enemyPos = range.CenterPosition;

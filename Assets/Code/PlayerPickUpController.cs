@@ -11,10 +11,8 @@ public class PlayerPickUpController : MonoBehaviour
 
     public void PickUp(ItemPickup itemPickup)
     {
-        if (pickedUpItem != null)
-        {
-            pickedUpItem.Drop();
-        }
+        DropItem();
+
         pickedUpItem = itemPickup;
 
         var itemTransform = pickedUpItem.transform;
@@ -23,26 +21,55 @@ public class PlayerPickUpController : MonoBehaviour
         itemTransform.localRotation = Quaternion.identity;
     }
 
-    public void TryUseItem()
+    public void TryPlayerUseItem()
+    {
+        if (pickedUpItem != null)
+        {
+            if (pickedUpItem.TryGivePlayer())
+            {
+                DestroyItem();
+            }
+            else
+            {
+                DropItem();
+            }
+        }
+    }
+
+    public void DestroyItem()
+    {
+        if (pickedUpItem == null)
+        {
+            return;
+        }
+        Destroy(pickedUpItem.gameObject);
+    }
+
+    public void DropItem()
     {
         if (pickedUpItem == null)
         {
             return;
         }
 
-        if (pickedUpItem.TryUse())
-        {
-            //destroy
-        }
-        else
-        {
-            pickedUpItem.Drop();
-            pickedUpItem = null;
-        }
+        pickedUpItem.Drop();
+        pickedUpItem = null;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        var princess = collision.gameObject.GetComponent<Princess>();
+        if (princess != null)
+        {
+            if (pickedUpItem != null)
+            {
+                if (pickedUpItem.TryGivePrincess())
+                {
+                }
+            }
+
+            return;
+        }
         var pickUp = collision.gameObject.GetComponent<ItemPickup>();
         if (pickUp == null)
         {

@@ -5,14 +5,20 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
+    public BaseItemData itemData;
     public void Drop()
     {
         transform.SetParent(null, true);
         transform.position = transform.GetFlatPosition();
     }
 
-    public bool TryUse()
+    public bool TryGivePlayer()
     {
-        return false;
+        return itemData.TryPlayerUse(this);
+    }
+
+    public bool TryGivePrincess()
+    {
+        return itemData.TryGivePrincess(this);
     }
 }

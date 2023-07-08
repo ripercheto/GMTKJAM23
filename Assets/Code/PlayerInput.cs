@@ -19,7 +19,11 @@ public class PlayerInput : GameBehaviour
 
     private void Start()
     {
-        Princess.instance.health.onDeath += OnPrincessDeath;
+        if (!MainCharacters.TryGetPrincess(out var princess))
+        {
+            return;
+        }
+        princess.health.onDeath += OnPrincessDeath;
     }
 
     private void OnPrincessDeath()
@@ -36,9 +40,9 @@ public class PlayerInput : GameBehaviour
         }
         if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1"))
         {
-            pickUpController.TryUseItem();
+            pickUpController.TryPlayerUseItem();
         }
-        
+
         Vector2 playerInput;
         playerInput.x = Input.GetAxis("Horizontal");
         playerInput.y = Input.GetAxis("Vertical");

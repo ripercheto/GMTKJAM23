@@ -12,8 +12,11 @@ public class OffscreenIndicator : MonoBehaviour
 
     private void Start()
     {
-        target = PlayerInput.instance.gameObject;
-        PlayerInput.instance.health.onDeath += () => enabled = false;
+        if (!MainCharacters.TryGetPlayer(out var player))
+            return;
+        
+        target = player.gameObject;
+        player.health.onDeath += () => enabled = false;
     }
 
     private void Update()

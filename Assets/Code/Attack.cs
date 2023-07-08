@@ -5,54 +5,49 @@ using UnityEngine;
 
 public class Attack : GameBehaviour
 {
-    public Weapon weaponPrefab;
-
-    public float damage = 50f;
-    public float duration = 0.1f;
-    public float attackAngle = 180f;
-    public float cooldown = 0.5f;
-
+    private WeaponData data;
     private Weapon weapon;
     private float allowedHitTime;
+    private ItemPickup lastPickup;
+    public bool HasWeapon => data != null;
+    
+    public bool TryEquipWeapon(ItemPickup pickup)
+    {
+        if (pickup.itemData is not WeaponData weaponData)
+        {
+            return false;
+        }
+        if (lastPickup != null)
+        {
+            lastPickup.transform.position = transform.position;
+            lastPickup.gameObject.SetActive(true);
+        }
+        data = weaponData;
+        lastPickup = pickup;
+        lastPickup.gameObject.SetActive(false);
+        return true;
+    }
 
     public void TryPerformAttack(Health attacker, Vector3 dir)
     {
+        if (!HasWeapon)
+        {
+            return;
+        }
+
         if (Time.time < allowedHitTime)
         {
             return;
         }
-        allowedHitTime = Time.time + duration + cooldown;
+        allowedHitTime = Time.time + data.duration + data.cooldown;
+        StartCoroutine(data.PerformAttack(movement.body, dir));
+        attacker.onDeath += OnAttackerDied;
 
-        //movement.StartDash(dir, power, duration, null);
-        StartCoroutine(SwingWeapon());
-
-        IEnumerator SwingWeapon()
+        void OnAttackerDied()
         {
-            var halfAngle = attackAngle * 0.5f;
-            var startRotation = Quaternion.LookRotation(dir, Vector3.up);
-
-            weapon = Instantiate(weaponPrefab, transform.position, startRotation * Quaternion.AngleAxis(-halfAngle, Vector3.up));
-            weapon.actionOnEnter = (x) => x.TakeDamage(damage);
-            attacker.onDeath += OnAttackerDied;
-
-            void OnAttackerDied()
-            {
-                Destroy(weapon.gameObject);
-                StopAllCoroutines();
-            }
-
-            var t = 0f;
-            while (t < 1f)
-            {
-                t += Time.fixedDeltaTime / duration;
-                yield return new WaitForFixedUpdate();
-                var angle = Mathf.Lerp(-halfAngle, halfAngle, t);
-                weapon.body.MovePosition(movement.body.position);
-                weapon.body.MoveRotation(startRotation * Quaternion.AngleAxis(angle, Vector3.up));
-            }
-            
-            attacker.onDeath -= OnAttackerDied;
-            Destroy(weapon.gameObject);
+            data.CleanUp();
+            StopAllCoroutines();
         }
+
     }
 }

@@ -16,7 +16,7 @@ public class WeaponData : BaseItemData
 
     private Weapon weapon;
     
-    public IEnumerator PerformAttack(Rigidbody body, Vector3 dir, Action onDone)
+    public IEnumerator PerformAttack(Rigidbody body, Vector3 dir, Action<bool> onDone)
     {
         var halfAngle = attackAngle * 0.5f;
         var startRotation = Quaternion.LookRotation(dir, Vector3.up);
@@ -34,8 +34,8 @@ public class WeaponData : BaseItemData
             weapon.body.MoveRotation(startRotation * Quaternion.AngleAxis(angle, Vector3.up));
         }
 
+        onDone?.Invoke(weapon.HitCount > 0);
         Destroy(weapon.gameObject);
-        onDone?.Invoke();
     }
 
     public void CleanUp()

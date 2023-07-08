@@ -19,6 +19,7 @@ public class Attack : GameBehaviour
         {
             Instantiate(data.prefab, transform.position, Quaternion.identity);
         }
+        //initialize durability
         if (!durability.ContainsKey(weaponData))
         {
             durability.Add(weaponData, weaponData.durability);
@@ -50,11 +51,22 @@ public class Attack : GameBehaviour
             StopAllCoroutines();
         }
 
-        void OnDone()
+        void OnDone(bool didHit)
         {
-            durability[data] -= data.durabilityPerHit;
-            OnDurabilityChanged();
             attacker.onDeath -= OnAttackerDied;
+            
+            if (!didHit)
+            {
+                return;
+            }
+            durability[data] -= data.durabilityPerHit;
+            //destroy if out of durability
+            if (durability[data] <= 0)
+            {
+                durability.Remove(data);
+                data = null;
+            }
+            OnDurabilityChanged();
         }
     }
 

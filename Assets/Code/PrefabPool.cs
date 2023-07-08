@@ -40,6 +40,9 @@ public class PrefabPool<T> : MonoBehaviour where T : MonoBehaviour
         if (inactiveObjects.Count == 0)
         {
             var newObject = Instantiate(prefab, pos, Quaternion.identity);
+#if UNITY_EDITOR
+            newObject.name += Time.frameCount;
+#endif
             activeObjects.Add(newObject);
         }
         else

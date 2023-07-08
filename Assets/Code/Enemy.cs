@@ -27,6 +27,7 @@ public class Enemy : GameBehaviour
 
     private void OnDeath()
     {
+        range.Clear();
         health.ResetHealth();
         EnemyPool.instance.Deactivate(this);
     }
@@ -95,7 +96,12 @@ public class Enemy : GameBehaviour
         {
             return;
         }
-        
+
+        if ((health.transform.position - transform.position).magnitude > attackDamage)
+        {
+            Debug.Log(health.gameObject.name + " " + gameObject.name);
+        }
+
         health.TakeDamage(attackDamage);
         attackTime = Time.time + attackCooldown;
     }

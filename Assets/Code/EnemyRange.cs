@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyRange : MonoBehaviour
 {
     private readonly List<Transform> targets = new();
+
     public bool HasTargetsInRange
     {
         get
@@ -18,7 +19,7 @@ public class EnemyRange : MonoBehaviour
     {
         return transform.GetClosestTarget(targets);
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         targets.Add(other.transform);
@@ -27,5 +28,10 @@ public class EnemyRange : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         targets.Remove(other.transform);
+    }
+
+    public void Clear()
+    {
+        targets.Clear();
     }
 }

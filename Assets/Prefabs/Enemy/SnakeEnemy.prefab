@@ -53,6 +53,7 @@ MonoBehaviour:
   movement: {fileID: 4503998756163005961}
   health: {fileID: 6069384397602350890}
   useProjectile: 1
+  particleOffset: {x: 0, y: 1, z: 0.5}
   range: {fileID: 6545621450597398687}
   attackStopDistance: 5
   attackStopDistanceHalfDeadZone: 0.5

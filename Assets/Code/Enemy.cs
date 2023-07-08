@@ -12,6 +12,7 @@ public enum EnemyType
 public class Enemy : GameBehaviour
 {
     public bool useProjectile;
+    public Vector3 particleOffset;
     public EnemyRange range;
     public float attackStopDistance = 0;
     public float attackStopDistanceHalfDeadZone = 0.5f;
@@ -33,10 +34,17 @@ public class Enemy : GameBehaviour
     private void OnEnable()
     {
         attackTime = Time.time + attackCooldown;
+        //if(health.flashController.rend.isVisible)
+        {
+            var particlePool = ParticlePool.Get(ParticleType.Spawn);
+            particlePool.Activate(transform.position + particleOffset, (x)=>x.Play());
+        }
     }
 
     private void OnDeath()
     {
+        var particlePool = ParticlePool.Get(ParticleType.Death);
+        particlePool.Activate(transform.position + particleOffset, (x)=>x.Play());
         health.ResetHealth();
         EnemyPool.bat.Deactivate(this);
     }

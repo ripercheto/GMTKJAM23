@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Attack : GameBehaviour
 {
-    private WeaponData data;
+    public WeaponData data;
     private Weapon weapon;
     private float allowedHitTime;
     public bool HasWeapon => data != null;

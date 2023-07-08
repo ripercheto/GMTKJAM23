@@ -40,4 +40,25 @@ public static class TransformUtility
         }
         return closestTarget;
     }
+
+    public static Transform GetClosestTarget(this Transform transform, IEnumerable<MonoBehaviour> targets)
+    {
+        var pos = transform.position;
+        var closestDistance = float.MaxValue;
+        Transform closestTarget = null;
+        foreach (var target in targets)
+        {
+            if (target == null)
+            {
+                continue;
+            }
+            var distance = (target.transform.position - pos).sqrMagnitude;
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestTarget = target.transform;
+            }
+        }
+        return closestTarget;
+    }
 }

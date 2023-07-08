@@ -10,6 +10,7 @@ public class WeaponData : BaseItemData
 
     public bool melee = true;
     public float damage = 50f;
+    public float attackDistance = 2;
     public float cooldown = 1f;
     public float duration = 0.5f;
     [Space, Min(0)]

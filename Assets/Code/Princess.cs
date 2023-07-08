@@ -19,7 +19,6 @@ public class Princess : GameBehaviour
     public Attack attack;
     public PrincessRange range;
 
-    public float attackDistance = 2;
     public float distanceFromTarget = 1;
     public float distanceFromPath = 2;
     public float attackModeDuration = 5;
@@ -114,11 +113,11 @@ public class Princess : GameBehaviour
                 break;
             case State.Attacking:
             {
-                if (range.HasEnemiesInRange)
+                if (range.HasEnemiesInRange && attack.HasWeapon)
                 {
-                    var enemyPos = range.CenterPosition;
-                    var dir = enemyPos - pos;
-                    var enemyTargetPos = enemyPos - dir.normalized * attackDistance;
+                    var enemyPos = range.Closest;
+                    var dir = pos - enemyPos;
+                    var enemyTargetPos = enemyPos + dir.normalized * attack.data.attackDistance;
                     Debug.DrawLine(pos, enemyTargetPos);
                     targetPos = enemyTargetPos;
                 }

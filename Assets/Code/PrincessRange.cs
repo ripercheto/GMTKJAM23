@@ -35,6 +35,8 @@ public class PrincessRange : MonoBehaviour
         }
     }
 
+    public Vector3 Closest => transform.GetClosestTarget(enemies).position;
+
     [ShowInInspector]
     public readonly List<Enemy> enemies = new();
 

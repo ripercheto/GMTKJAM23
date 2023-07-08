@@ -23,25 +23,26 @@ public class Enemy : GameBehaviour
 
     private void OnDeath()
     {
-        Destroy(gameObject);
+        health.ResetHealth();
+        EnemyPool.instance.Deactivate(this);
     }
 
     private void Start()
     {
         targets = new();
-        
+
         if (Princess.instance != null)
         {
             Princess.instance.health.onDeath += OnMainDeath;
             targets.Add(Princess.instance.transform);
         }
-        
+
         if (PlayerInput.instance != null)
         {
             PlayerInput.instance.health.onDeath += OnMainDeath;
             targets.Add(PlayerInput.instance.transform);
         }
-        
+
         CheckIfTargetsDead();
     }
 

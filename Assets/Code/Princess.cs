@@ -48,7 +48,7 @@ public class Princess : GameBehaviour
         }
 
         var attackDir = targetPos - pos;
-        attack.TryPerformAttack(attackDir);
+        attack.TryPerformAttack(health, attackDir);
 
         Vector3 GetTargetPosition()
         {

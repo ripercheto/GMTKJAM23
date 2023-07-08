@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9edeb93b160f3c4ba00820d9d773676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 5554315391805390879}
+  rend: {fileID: 5554315391805390879}
   delay: 0.1
   restoreDuration: 0.1
 --- !u!1 &3954922187320904132

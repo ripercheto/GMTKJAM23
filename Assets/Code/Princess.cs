@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Princess : GameBehaviour
 {
@@ -45,7 +46,7 @@ public class Princess : GameBehaviour
 
     private void OnDeath()
     {
-        Destroy(gameObject);
+        SceneManager.LoadScene("Game Over");;
     }
 
     private void Update()

@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  flashController: {fileID: 0}
+  flashController: {fileID: 9193469994657593402}
 --- !u!135 &8147374349834057216
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -208,6 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1186014895577322459}
   - component: {fileID: 6642613831175306984}
+  - component: {fileID: 9193469994657593402}
   m_Layer: 0
   m_Name: Snakeman
   m_TagString: Untagged
@@ -282,3 +283,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9193469994657593402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5382503209771825079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9edeb93b160f3c4ba00820d9d773676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rend: {fileID: 6642613831175306984}
+  delay: 0.1
+  restoreDuration: 0.1

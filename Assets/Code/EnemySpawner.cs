@@ -19,7 +19,17 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        MainCharacters.onMainDeath += () => enabled = false;
+        MainCharacters.onMainDeath += OnMainDeath;
+    }
+
+    private void OnDestroy()
+    {
+        MainCharacters.onMainDeath -= OnMainDeath;
+    }
+
+    private void OnMainDeath()
+    {
+        enabled = false;
     }
 
     private void Update()

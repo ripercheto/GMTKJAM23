@@ -10,7 +10,7 @@ public class Attack : GameBehaviour
     private float allowedHitTime;
     private ItemPickup lastPickup;
     public bool HasWeapon => data != null;
-    
+
     public bool TryEquipWeapon(ItemPickup pickup)
     {
         if (pickup.itemData is not WeaponData weaponData)
@@ -40,14 +40,17 @@ public class Attack : GameBehaviour
             return;
         }
         allowedHitTime = Time.time + data.duration + data.cooldown;
-        StartCoroutine(data.PerformAttack(movement.body, dir));
+        StartCoroutine(data.PerformAttack(movement.body, dir, OnDone));
+        
         attacker.onDeath += OnAttackerDied;
-
         void OnAttackerDied()
         {
             data.CleanUp();
             StopAllCoroutines();
         }
-
+        void OnDone()
+        {
+            attacker.onDeath -= OnAttackerDied;
+        }
     }
 }

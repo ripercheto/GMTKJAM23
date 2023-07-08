@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class WeaponData : BaseItemData
 
     private Weapon weapon;
 
-    public IEnumerator PerformAttack(Rigidbody body, Vector3 dir)
+    public IEnumerator PerformAttack(Rigidbody body, Vector3 dir, Action onDone)
     {
         var halfAngle = attackAngle * 0.5f;
         var startRotation = Quaternion.LookRotation(dir, Vector3.up);
@@ -32,6 +33,7 @@ public class WeaponData : BaseItemData
         }
 
         Destroy(weapon.gameObject);
+        onDone?.Invoke();
     }
 
     public void CleanUp()

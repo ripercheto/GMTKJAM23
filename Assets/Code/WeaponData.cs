@@ -15,6 +15,7 @@ public class WeaponData : BaseItemData
     public float moveAmount = 1f;
     [HideIf(nameof(moveAmount), 0)]
     public AnimationCurve moveCurve;
+    public float resetHitEnemiesPoint = 1f;
 
     [Space]
     public float attackAngle = 180f;
@@ -34,6 +35,7 @@ public class WeaponData : BaseItemData
         weapon.actionOnEnter = (x) => x.TakeDamage(damage);
         var endPos = dir * moveAmount;
         var t = 0f;
+        var reset = false;
         while (t < 1f)
         {
             t += Time.fixedDeltaTime / duration;
@@ -42,6 +44,11 @@ public class WeaponData : BaseItemData
             var pos = Vector3.Lerp(Vector3.zero, endPos, moveCurve.Evaluate(t));
             weapon.body.MovePosition(body.position + pos);
             weapon.body.MoveRotation(startRotation * Quaternion.AngleAxis(angle, Vector3.up));
+            if (!reset && t >= resetHitEnemiesPoint)
+            {
+                reset = true;
+                weapon.Clear();
+            }
         }
 
         onDone?.Invoke(weapon.HitCount > 0);

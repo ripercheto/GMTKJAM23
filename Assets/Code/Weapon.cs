@@ -19,4 +19,9 @@ public class Weapon : MonoBehaviour
         actionOnEnter?.Invoke(health);
         healths.Add(health);
     }
+
+    public void Clear()
+    {
+        healths.Clear();
+    }
 }

@@ -15,7 +15,7 @@ TagManager:
   - PrincessWeapon
   - PrincessRange
   - Enemy
-  - EnemyRange
+  - EnemyProjectile
   - Pickup
   - Player
   - 

@@ -52,10 +52,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 4503998756163005961}
   health: {fileID: 6069384397602350890}
+  projectile: {fileID: 6795716692329985664, guid: 1cfb0daf8e5822743a91617a9ab70d64,
+    type: 3}
   range: {fileID: 6545621450597398687}
   attackStopDistance: 5
   attackStopDistanceHalfDeadZone: 0.5
-  attackCooldown: 5
+  attackCooldown: 4
   attackDamage: 2
 --- !u!114 &4503998756163005961
 MonoBehaviour:
@@ -147,7 +149,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 4
+  m_Constraints: 116
   m_CollisionDetection: 1
 --- !u!1 &5382503209771825079
 GameObject:

@@ -11,6 +11,7 @@ public enum EnemyType
 
 public class Enemy : GameBehaviour
 {
+    public EnemyProjectile projectile;
     public EnemyRange range;
     public float attackStopDistance = 0;
     public float attackStopDistanceHalfDeadZone = 0.5f;
@@ -117,12 +118,17 @@ public class Enemy : GameBehaviour
             return;
         }
 
-        if ((health.transform.position - transform.position).magnitude > attackDamage)
-        {
-            Debug.Log(health.gameObject.name + " " + gameObject.name);
-        }
+        var dir = (health.transform.position - transform.position).normalized;
 
-        health.TakeDamage(attackDamage);
+        if (projectile != null)
+        {
+            var instance = Instantiate(projectile, transform.position, Quaternion.identity);
+            instance.Launch(dir, attackDamage);
+        }
+        else
+        {
+            health.TakeDamage(attackDamage);
+        }
         attackTime = Time.time + attackCooldown;
     }
 }

@@ -8,12 +8,14 @@ public class WeaponData : BaseItemData
     public Weapon weaponPrefab;
 
     public float damage = 50f;
+    public float durability = 50f;
+    public float durabilityPerHit = 5f;
     public float duration = 0.5f;
     public float attackAngle = 180f;
     public float cooldown = 1f;
 
     private Weapon weapon;
-
+    
     public IEnumerator PerformAttack(Rigidbody body, Vector3 dir, Action onDone)
     {
         var halfAngle = attackAngle * 0.5f;

@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerPickUpController : MonoBehaviour
 {
     public Transform socket;
-
+    private float pickUpTime;
     private ItemPickup pickedUpItem;
 
     public void PickUp(ItemPickup itemPickup)

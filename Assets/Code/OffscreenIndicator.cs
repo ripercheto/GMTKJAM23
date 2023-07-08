@@ -6,9 +6,15 @@ using UnityEngine;
 public class OffscreenIndicator : MonoBehaviour
 {
     public Camera cam;
-    public GameObject target;
     public RectTransform element;
     public RectTransform canvasRectTransform;
+    private GameObject target;
+
+    private void Start()
+    {
+        target = PlayerInput.instance.gameObject;
+        PlayerInput.instance.health.onDeath += () => enabled = false;
+    }
 
     private void Update()
     {
@@ -23,17 +29,17 @@ public class OffscreenIndicator : MonoBehaviour
         element.gameObject.SetActive(true);
         var sizeDelta = canvasRectTransform.sizeDelta;
 
-        var center = new Vector2(0.5f * sizeDelta.x - sizeDelta.x * 0.5f, 0.5f * sizeDelta.y - sizeDelta.y * 0.5f);
         var max = new Vector2(sizeDelta.x - sizeDelta.x * 0.5f, sizeDelta.y - sizeDelta.y * 0.5f);
+        var center = max * 0.5f;
         var screenPos = new Vector2(viewportPos.x * sizeDelta.x - sizeDelta.x * 0.5f, viewportPos.y * sizeDelta.y - sizeDelta.y * 0.5f);
 
         var elementHalfSize = element.rect.size * 0.5f;
 
         screenPos.x = Mathf.Clamp(screenPos.x, canvasRectTransform.rect.position.x + elementHalfSize.x, max.x - elementHalfSize.x);
         screenPos.y = Mathf.Clamp(screenPos.y, canvasRectTransform.rect.position.y + elementHalfSize.y, max.y - elementHalfSize.y);
-
-        var dir = screenPos - center.normalized;
-        element.rotation = Quaternion.Euler(0, 0, Vector2.Angle(Vector2.up, dir));
+        var dir = screenPos.normalized;
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        element.rotation = Quaternion.Euler(0, 0, angle - 90f);
         element.anchoredPosition = screenPos;
     }
 }

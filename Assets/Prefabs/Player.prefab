@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 4503998756163005961}
   - component: {fileID: 6069384397602350890}
   - component: {fileID: 460171782905517192}
+  - component: {fileID: 4170239038315821835}
   - component: {fileID: 8147374349834057216}
   - component: {fileID: 4652309524286351648}
   m_Layer: 12
@@ -131,6 +132,7 @@ MonoBehaviour:
   movement: {fileID: 4503998756163005961}
   health: {fileID: 6069384397602350890}
   pickUpController: {fileID: 460171782905517192}
+  roll: {fileID: 4170239038315821835}
 --- !u!114 &4503998756163005961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +148,7 @@ MonoBehaviour:
   maxSpeed: 10
   maxAcceleration: 100
   body: {fileID: 4652309524286351648}
+  desiredVelocity: {x: 0, y: 0}
 --- !u!114 &6069384397602350890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   flashController: {fileID: 4659857654673722926}
+  invincible: 0
 --- !u!114 &460171782905517192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +177,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   socket: {fileID: 73856365929833431}
+--- !u!114 &4170239038315821835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2873683854216109202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c18e53818f64294196bc8ddafa24d2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 4503998756163005961}
+  health: {fileID: 6069384397602350890}
+  power: 50
+  duration: 0.1
+  cooldown: 2
 --- !u!135 &8147374349834057216
 SphereCollider:
   m_ObjectHideFlags: 0

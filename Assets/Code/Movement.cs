@@ -13,7 +13,8 @@ public class Movement : MonoBehaviour
 
     private Vector3? overrideVelocity;
     private Vector3 velocity;
-    private Vector2 desiredVelocity;
+    [HideInInspector]
+    public Vector2 desiredVelocity;
     private Coroutine dashCoroutine;
 
     public void UpdateDesiredVelocity(Vector3 newDesiredVelocity)
@@ -29,7 +30,6 @@ public class Movement : MonoBehaviour
 
     public void StartDash(Vector3 direction, float power, float duration, Action onEnd)
     {
-        Debug.Log("Dash");
         if (dashCoroutine != null)
         {
             StopCoroutine(dashCoroutine);

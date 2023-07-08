@@ -8,6 +8,7 @@ public class PlayerInput : GameBehaviour
     public static PlayerInput instance;
 
     public PlayerPickUpController pickUpController;
+    public PlayerRoll roll;
     private bool princessDead;
 
     private void Awake()
@@ -42,10 +43,14 @@ public class PlayerInput : GameBehaviour
         {
             pickUpController.TryPlayerUseItem();
         }
-
         Vector2 playerInput;
         playerInput.x = Input.GetAxis("Horizontal");
         playerInput.y = Input.GetAxis("Vertical");
         movement.UpdateDesiredVelocity(playerInput);
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump"))
+        {
+            roll.TryRoll(movement.desiredVelocity.To3D().normalized);
+        }
     }
 }

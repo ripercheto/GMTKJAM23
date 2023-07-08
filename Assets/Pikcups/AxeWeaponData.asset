@@ -16,6 +16,42 @@ MonoBehaviour:
   weaponPrefab: {fileID: 3436212203780608517, guid: e9a71359018037946ab0a8d7d9b57842,
     type: 3}
   damage: 50
-  duration: 0.5
-  attackAngle: 180
   cooldown: 1
+  duration: 1
+  moveAmount: 5
+  moveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.00021713541
+      value: -0.00040359213
+      inSlope: -0.15225111
+      outSlope: -0.15225111
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.22244304
+    - serializedVersion: 3
+      time: 0.49540758
+      value: 1.004738
+      inSlope: 0.015322924
+      outSlope: 0.015322924
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9992776
+      value: -0.0025800318
+      inSlope: 0.00009088929
+      outSlope: 0.00009088929
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  attackAngle: 0
+  durability: 50
+  durabilityPerHit: 5

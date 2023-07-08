@@ -6,6 +6,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float maxHealth = 100;
+    public FlashController flashController;
     private float currentHealth;
 
     private void Awake()
@@ -16,6 +17,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(float amount)
     {
         currentHealth -= amount;
+        flashController.Flash();
         if (currentHealth < 0)
         {
             Destroy(gameObject);

@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 414189244921814084}
   - component: {fileID: 3789507827025724004}
   - component: {fileID: 5926076681426013197}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : GameBehaviour
@@ -11,25 +12,37 @@ public class Enemy : GameBehaviour
     private Vector3? endDirection;
 
     private Transform closestTarget;
-    private Transform[] targets;
+    private List<Transform> targets;
 
     private bool CanAttack => Time.time > attackTime;
 
     private void Awake()
     {
-        health.onDeath += () => Destroy(gameObject);
+        health.onDeath += OnDeath;
+    }
+
+    private void OnDeath()
+    {
+        Destroy(gameObject);
     }
 
     private void Start()
     {
-        targets = new[]
+        targets = new();
+        
+        if (Princess.instance != null)
         {
-            Princess.instance.transform,
-            PlayerInput.instance.transform
-        };
-
-        Princess.instance.health.onDeath += OnMainDeath;
-        PlayerInput.instance.health.onDeath += OnMainDeath;
+            Princess.instance.health.onDeath += OnMainDeath;
+            targets.Add(Princess.instance.transform);
+        }
+        
+        if (PlayerInput.instance != null)
+        {
+            PlayerInput.instance.health.onDeath += OnMainDeath;
+            targets.Add(PlayerInput.instance.transform);
+        }
+        
+        CheckIfTargetsDead();
     }
 
     private void Update()
@@ -63,7 +76,12 @@ public class Enemy : GameBehaviour
     private void OnMainDeath()
     {
         deadTargets++;
-        if (deadTargets >= targets.Length)
+        CheckIfTargetsDead();
+    }
+
+    private void CheckIfTargetsDead()
+    {
+        if (deadTargets >= targets.Count)
         {
             endDirection = Random.insideUnitCircle.To3D().normalized;
         }

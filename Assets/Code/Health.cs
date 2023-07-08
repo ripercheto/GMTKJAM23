@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
     public float maxHealth = 100;
     public FlashController flashController;
+    [ShowInInspector, ReadOnly]
     private float currentHealth;
     public event Action onDeath;
     public bool IsAlive => currentHealth > 0;
@@ -24,7 +26,7 @@ public class Health : MonoBehaviour
         }
         currentHealth -= amount;
         flashController.Flash();
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             onDeath?.Invoke();
         }

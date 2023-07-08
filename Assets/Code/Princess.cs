@@ -31,6 +31,7 @@ public class Princess : GameBehaviour
     private int wayPointIndex;
     private Vector3 targetPosOnPath;
     private Vector3 targetPos;
+    private Vector3 closestPosOnPath;
     private Vector3 wayPointPos;
     private float attackModeTime;
     private bool AttackModeOffCooldown => Time.time > attackModeTime;
@@ -53,8 +54,17 @@ public class Princess : GameBehaviour
     private void Update()
     {
         var pos = transform.GetFlatPosition();
+        HandleUpdateMovement(pos);
+
+        var attackDir = targetPos - pos;
+        attack.TryPerformAttack(health, attackDir);
+    }
+
+    void HandleUpdateMovement(Vector3 pos)
+    {
         wayPointPos = CurrentWaypoint.GetFlatPosition();
-        targetPosOnPath = FindClosestPointOnEdge(pos, state != State.FollowingPath) + Vector3.ClampMagnitude(wayPointPos - targetPosOnPath, 2);
+        closestPosOnPath = FindClosestPointOnEdge(pos, state != State.FollowingPath);
+        targetPosOnPath = closestPosOnPath + Vector3.ClampMagnitude(wayPointPos - targetPosOnPath, 2);
         targetPos = Vector3.zero;
         switch (state)
         {
@@ -146,7 +156,7 @@ public class Princess : GameBehaviour
                     state = State.FollowingPath;
                 }
 
-                targetPos = targetPosOnPath;
+                targetPos = closestPosOnPath;
             }
                 break;
         }
@@ -157,8 +167,6 @@ public class Princess : GameBehaviour
             movement.UpdateDesiredVelocity(dir);
         }
 
-        var attackDir = targetPos - pos;
-        attack.TryPerformAttack(health, attackDir);
     }
 
     private void OnDrawGizmos()

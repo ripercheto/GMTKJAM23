@@ -31,6 +31,7 @@ public class Princess : GameBehaviour
     private int wayPointIndex;
     private Vector3 targetPosOnPath;
     private Vector3 targetPos;
+    private Vector3 wayPointPos;
     private float attackModeTime;
     private bool AttackModeOffCooldown => Time.time > attackModeTime;
     private State state;
@@ -52,8 +53,8 @@ public class Princess : GameBehaviour
     private void Update()
     {
         var pos = transform.GetFlatPosition();
-        var wayPointPos = CurrentWaypoint.GetFlatPosition();
-        targetPosOnPath = FindClosestPointOnEdge(pos) + Vector3.ClampMagnitude(wayPointPos - targetPosOnPath, 2);
+        wayPointPos = CurrentWaypoint.GetFlatPosition();
+        targetPosOnPath = FindClosestPointOnEdge(pos, state != State.FollowingPath) + Vector3.ClampMagnitude(wayPointPos - targetPosOnPath, 2);
         targetPos = Vector3.zero;
         switch (state)
         {
@@ -174,15 +175,17 @@ public class Princess : GameBehaviour
         Gizmos.DrawWireSphere(targetPosOnPath, 0.5f);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(targetPos, 0.5f);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(wayPointPos, 0.5f);
     }
 
-    public Vector3 FindClosestPointOnEdge(Vector3 targetPoint)
+    public Vector3 FindClosestPointOnEdge(Vector3 targetPoint, bool updateWaypointIndex)
     {
         Vector3 closestPoint = Vector3.zero;
         float closestDistance = float.MaxValue;
 
         int vertexCount = wayPoints.Length;
-
+        var closestIndex = -1;
         for (int i = 0; i < vertexCount; i++)
         {
             // Get the current vertex and the next vertex (loop around to the first vertex for the last pair)
@@ -201,9 +204,14 @@ public class Princess : GameBehaviour
             {
                 closestDistance = distance;
                 closestPoint = pointOnEdge;
+
+                closestIndex = (i + 1) % vertexCount;
             }
         }
-
+        if (closestIndex != -1 && updateWaypointIndex)
+        {
+            wayPointIndex = closestIndex;
+        }
         return closestPoint;
     }
 }

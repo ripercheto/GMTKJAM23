@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    public float takeDamageCooldown = 0.1f;
     public float maxHealth = 100;
     public FlashController flashController;
 
@@ -16,6 +17,7 @@ public class Health : MonoBehaviour
     public bool IsAlive => currentHealth > 0;
 
     public bool invincible;
+    private float takeDamageTime;
 
     private void Awake()
     {
@@ -40,9 +42,16 @@ public class Health : MonoBehaviour
         {
             return;
         }
+
+        if (Time.time < takeDamageTime)
+        {
+            return;
+        }
+
         currentHealth -= amount;
         onHealthChaned?.Invoke(Mathf.Clamp01(currentHealth / maxHealth));
         flashController.Flash(amount > 0 ? Color.white : Color.green);
+        takeDamageTime = Time.time + takeDamageCooldown;
 
         if (currentHealth <= 0)
         {

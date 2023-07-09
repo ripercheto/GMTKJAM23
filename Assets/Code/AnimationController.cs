@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AnimationController : GameBehaviour
 {
+    public Animator animator;
     public Transform target;
     public float duration = 0.1f;
     private bool shouldFaceRight = true;
@@ -12,14 +13,20 @@ public class AnimationController : GameBehaviour
     private bool isRotating;
 
     private Quaternion startRotation;
-
+    private static readonly int MovingBlend = Animator.StringToHash("MovingBlend");
+    private bool hasAnimator;
     private void Awake()
     {
+        hasAnimator = animator != null;
         startRotation = target.localRotation;
     }
 
     private void Update()
     {
+        if (hasAnimator)
+        {
+            animator.SetFloat(MovingBlend, movement.velocity.magnitude / movement.maxSpeed);
+        }
         if (movement.desiredVelocity.x == 0)
         {
             return;

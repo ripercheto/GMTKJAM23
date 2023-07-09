@@ -64,6 +64,10 @@ public class Health : MonoBehaviour
         }
 
         currentHealth -= amount;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
         onHealthChaned?.Invoke(Mathf.Clamp01(currentHealth / maxHealth));
         flashController.Flash(amount > 0 ? Color.white : Color.green);
         takeDamageTime = Time.time + takeDamageCooldown;

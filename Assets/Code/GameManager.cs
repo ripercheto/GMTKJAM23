@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
         MainCharacters.onMainDeath += OnMainDeath;
     }
 
+    private void OnDestroy()
+    {
+        MainCharacters.onMainDeath -= OnMainDeath;
+    }
+
     private void OnMainDeath()
     {
         if (gameOver)

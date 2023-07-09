@@ -144,6 +144,13 @@ public class Princess : GameBehaviour
             {
                 if (Vector3.Distance(pos, closestPosOnPath) < distanceFromPath)
                 {
+                    var closestPoint = transform.GetClosestTarget(wayPoints);
+                    var closestPointIndex = Array.IndexOf(wayPoints, closestPoint);
+                    if (closestPointIndex > wayPointIndex || closestPointIndex == 0)
+                    {
+                        wayPointIndex = closestPointIndex;
+                    }
+                    
                     state = State.FollowingPath;
                 }
                 if (!attack.HasWeapon)

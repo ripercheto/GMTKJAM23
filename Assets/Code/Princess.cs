@@ -17,6 +17,7 @@ public class Princess : GameBehaviour
 
     public static Princess instance;
 
+    public PrincessEmotions emotions;
     public Attack attack;
     public PrincessRange range;
 
@@ -75,6 +76,7 @@ public class Princess : GameBehaviour
 
                 if (attack.HasWeapon)
                 {
+                    emotions.SetWantsWeapon(false);
                     if (range.HasEnemiesInRange && AttackModeOffCooldown)
                     {
                         state = State.Attacking;
@@ -91,6 +93,7 @@ public class Princess : GameBehaviour
                 targetPos = wayPointPos;
                 if (!attack.HasWeapon)
                 {
+                    emotions.SetWantsWeapon(true);
                     state = State.ComingToPlayer;
                 }
                 else
@@ -129,6 +132,7 @@ public class Princess : GameBehaviour
                 }
                 if (!attack.HasWeapon)
                 {
+                    emotions.SetWantsWeapon(true);
                     state = State.ComingToPlayer;
                     break;
                 }

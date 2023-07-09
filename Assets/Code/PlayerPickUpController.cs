@@ -9,6 +9,9 @@ public class PlayerPickUpController : MonoBehaviour
     public float pickUpCooldown = 0.1f;
     private float pickUpTime;
     private ItemPickup pickedUpItem;
+    public AudioSource pickUpSoundSource;
+    public AudioClip pickupSound;
+    public AudioClip dropSound;
 
     private void Awake()
     {
@@ -25,6 +28,8 @@ public class PlayerPickUpController : MonoBehaviour
     public void PickUp(ItemPickup itemPickup)
     {
         DropItem();
+        pickUpSoundSource.clip = pickupSound;
+        pickUpSoundSource.Play();
 
         pickedUpItem = itemPickup;
 
@@ -45,6 +50,8 @@ public class PlayerPickUpController : MonoBehaviour
             else
             {
                 DropItem();
+                pickUpSoundSource.clip = dropSound;
+                pickUpSoundSource.Play();
             }
         }
     }

@@ -95,6 +95,7 @@ MonoBehaviour:
   damageSounds:
   - {fileID: 8300000, guid: 5dde5380cb182db40978f01b61519435, type: 3}
   - {fileID: 8300000, guid: fbee912fe666347419c53d9d17db0df4, type: 3}
+  healSound: {fileID: 8300000, guid: 58b3098e427d44e4a93a93dc75b538fe, type: 3}
   damageAudioSource: {fileID: 4293356445351257654}
   invincible: 0
 --- !u!114 &2890353822654816163

@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     public float maxHealth = 100;
     public FlashController flashController;
     public AudioClip[] damageSounds;
+    public AudioClip healSound;
     public AudioSource damageAudioSource;
     
     [ShowInInspector, ReadOnly] 
@@ -50,9 +51,18 @@ public class Health : MonoBehaviour
         {
             return;
         }
-        
-        damageAudioSource.clip = damageSounds[Random.Range(0, damageSounds.Length)];
-        damageAudioSource.Play();
+
+        if (amount < 0)
+        {
+            damageAudioSource.clip = healSound;
+            damageAudioSource.Play();
+        }
+        else
+        {
+            damageAudioSource.clip = damageSounds[Random.Range(0, damageSounds.Length)];
+            damageAudioSource.Play();   
+        }
+
         currentHealth -= amount;
         onHealthChaned?.Invoke(Mathf.Clamp01(currentHealth / maxHealth));
         flashController.Flash(amount > 0 ? Color.white : Color.green);

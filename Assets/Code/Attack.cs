@@ -9,6 +9,8 @@ public class Attack : GameBehaviour
     private Weapon weapon;
     private float allowedHitTime;
     public bool HasWeapon => data != null;
+    public AudioSource soundSource;
+    public AudioClip weaponPickupSound;
 
     private float durability;
     public Action<float> onDurabilityChanged;
@@ -21,6 +23,8 @@ public class Attack : GameBehaviour
 
     public bool TryEquipWeapon(WeaponData weaponData, ItemPickup pickup)
     {
+        soundSource.clip = weaponPickupSound;
+        soundSource.Play();
         if (data == weaponData)
         {
             //same weapon

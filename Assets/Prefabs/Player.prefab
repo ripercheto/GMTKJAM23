@@ -298,6 +298,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 05b49a7f53261ff479d732b67535c167, type: 3}
   - {fileID: 8300000, guid: a2b95495d00f4fe4798d935157829f63, type: 3}
   - {fileID: 8300000, guid: 6c1a9c86a82f3b141bd8ec6a6901da72, type: 3}
+  healSound: {fileID: 8300000, guid: 58b3098e427d44e4a93a93dc75b538fe, type: 3}
   damageAudioSource: {fileID: 7206691280621399159}
   invincible: 0
 --- !u!114 &460171782905517192
@@ -313,7 +314,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   socket: {fileID: 73856365929833431}
-  pickUpCooldown: 0.5
+  pickUpCooldown: 1
+  pickUpSoundSource: {fileID: 7206691280621399159}
+  pickupSound: {fileID: 8300000, guid: 890337a26e803784ca75288f69f02781, type: 3}
+  dropSound: {fileID: 8300000, guid: 740d22312ebfb2e44bbf334fff4df81b, type: 3}
 --- !u!114 &4170239038315821835
 MonoBehaviour:
   m_ObjectHideFlags: 0

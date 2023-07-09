@@ -533,7 +533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5696279524908144097}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 1.617, z: 1.222}
+  m_LocalPosition: {x: 1, y: 1.8335062, z: 1.347}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -581,7 +581,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ddcc2af55219f9f4bb45f9de5ad4c1f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5959d7867c91ec45b96d5a8cbf48006, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -604,8 +604,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced505cceb562fd49b21c5f992849fbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loveDuration: 2
+  loveDuration: 0.5
   rend: {fileID: 8962396451893875302}
-  wantsWeapon: {fileID: 21300000, guid: 53c3bde33e9ce064594ae503a33cd737, type: 3}
-  sendsLove: {fileID: 255482412, guid: 4a8ebdb41e413b843b442768c786cedd, type: 3}
-  needsHealth: {fileID: 21300000, guid: ddcc2af55219f9f4bb45f9de5ad4c1f3, type: 3}
+  wantsWeapon: {fileID: 21300000, guid: f5959d7867c91ec45b96d5a8cbf48006, type: 3}
+  sendsLove: {fileID: 21300000, guid: 5c632cc4e8f98ac4991de16181b66df1, type: 3}
+  needsHealth: {fileID: 21300000, guid: 4517a37c9ec682d45a924cad72731544, type: 3}

@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 4503998756163005961}
   health: {fileID: 6069384397602350890}
+  type: 2
   useProjectile: 1
   particleOffset: {x: 0, y: 1, z: 0.5}
   range: {fileID: 6545621450597398687}
@@ -75,6 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundSource: {fileID: 0}
   dodgeSound: {fileID: 0}
+  dodgeFx: {fileID: 0}
   maxSpeed: 2.5
   maxAcceleration: 100
   body: {fileID: 4652309524286351648}

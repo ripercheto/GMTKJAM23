@@ -11,6 +11,7 @@ public enum EnemyType
 
 public class Enemy : GameBehaviour
 {
+    public EnemyType type;
     public bool useProjectile;
     public Vector3 particleOffset;
     public EnemyRange range;
@@ -50,12 +51,14 @@ public class Enemy : GameBehaviour
         {
             princess.range.enemies.Remove(this);
         }
-        
+        GameManager.instance.OnEnemyKilled(transform.position);
         ScoreCounter.onScoreChanged(scoreIncrease);
+        
         var particlePool = ParticlePool.Get(ParticleType.Death);
         particlePool.Activate(transform.position + particleOffset, (x) => x.Play());
+        
         health.ResetHealth();
-        EnemyPool.bat.Deactivate(this);
+        EnemyPool.Get(type).Deactivate(this);
     }
 
     private void Start()

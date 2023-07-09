@@ -35,6 +35,7 @@ public class Health : MonoBehaviour
         flashController.ResetFlash();
     }
 
+    [Button]
     public void TakeDamage(float amount)
     {
         if (!IsAlive)

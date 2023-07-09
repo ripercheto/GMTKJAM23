@@ -41,6 +41,7 @@ public class Princess : GameBehaviour
     {
         instance = this;
         MainCharacters.AddToMainCharacters(this);
+        health.onHealthChaned += (a) => emotions.SetNeedsHealth(a < 0.30f);
         health.onDeath += OnDeath;
         state = State.FollowingPath;
     }

@@ -604,6 +604,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced505cceb562fd49b21c5f992849fbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loveDuration: 2
   rend: {fileID: 8962396451893875302}
   wantsWeapon: {fileID: 21300000, guid: 53c3bde33e9ce064594ae503a33cd737, type: 3}
   sendsLove: {fileID: 255482412, guid: 4a8ebdb41e413b843b442768c786cedd, type: 3}
+  needsHealth: {fileID: 21300000, guid: ddcc2af55219f9f4bb45f9de5ad4c1f3, type: 3}

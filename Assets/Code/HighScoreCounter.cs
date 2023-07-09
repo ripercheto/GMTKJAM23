@@ -7,8 +7,8 @@ using TMPro;
 
 public class HighScoreCounter : MonoBehaviour
 {
-    public TextMeshProUGUI score;
     
+    public TextMeshProUGUI score;
     void Awake()
     {
         score.SetText(PlayerPrefs.GetInt("HighScore").ToString("000"));

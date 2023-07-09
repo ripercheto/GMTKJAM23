@@ -6,8 +6,8 @@ public class Movement : MonoBehaviour
     public AudioSource soundSource;
     public AudioClip dodgeSound;
     public ParticleSystem dodgeFx;
-    [SerializeField]
-    private float maxSpeed = 10f;
+
+    public float maxSpeed = 10f;
 
     [SerializeField]
     private float maxAcceleration = 10f;
@@ -15,7 +15,8 @@ public class Movement : MonoBehaviour
     public Rigidbody body;
 
     private Vector3? overrideVelocity;
-    private Vector3 velocity;
+    [HideInInspector]
+    public Vector3 velocity;
     [HideInInspector]
     public Vector2 desiredVelocity;
     private Coroutine dashCoroutine;

@@ -376,9 +376,9 @@ MonoBehaviour:
   range: {fileID: 3789507827025724004}
   distanceFromTarget: 1
   distanceFromPath: 2
-  attackModeDuration: 3
+  attackModeDuration: 2
   attackModeCooldown: 10
-  strayDistance: 5
+  strayDistance: 3
   wayPoints:
   - {fileID: 9012811448168323284}
 --- !u!114 &1439740870311606528

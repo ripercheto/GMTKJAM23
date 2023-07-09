@@ -54,4 +54,10 @@ public class AnimationController : GameBehaviour
         isFacingRight = shouldFaceRight;
         isRotating = false;
     }
+
+    private void OnEnable()
+    {
+        isFacingRight = true;
+        target.localRotation = startRotation;
+    }
 }

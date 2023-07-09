@@ -369,6 +369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 4503998756163005961}
   health: {fileID: 6069384397602350890}
+  deathFX: {fileID: 7937837867221102200, guid: ff32eb208a17d6e47a0997557180053f, type: 3}
   pickUpController: {fileID: 460171782905517192}
   roll: {fileID: 4170239038315821835}
 --- !u!114 &4503998756163005961

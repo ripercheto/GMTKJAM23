@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public MinMaxFloat spawnCooldown;
     public MinMaxInt spawnAmount;
     public float spawnRange = 5;
+    public AudioSource spawnSound;
 
     private float spawnTime;
     private EnemyPool pool;
@@ -45,6 +46,7 @@ public class EnemySpawner : MonoBehaviour
         var amount = spawnAmount.GetRandom();
         for (var i = 0; i < amount; i++)
         {
+            spawnSound.Play();
             var random = Random.insideUnitCircle * spawnRange;
             pool.Activate(transform.position + random.To3D());
         }

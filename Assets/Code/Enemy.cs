@@ -20,6 +20,8 @@ public class Enemy : GameBehaviour
     public float attackCooldown = 1;
     public float attackDamage = 10;
     public int scoreIncrease = 1;
+    public AudioSource soundSource;
+    public AudioClip shootSound;
     private float attackTime;
     private int deadTargets;
     private Vector3? endDirection;
@@ -143,6 +145,8 @@ public class Enemy : GameBehaviour
         if (useProjectile)
         {
             EnemyProjectilePool.instance.Activate(transform.position, (x) => x.Launch(dir, attackDamage));
+            soundSource.clip = shootSound;
+            soundSource.Play();
         }
         else
         {

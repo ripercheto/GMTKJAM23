@@ -44,6 +44,7 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnDeath()
     {
+        body.AddForce(Vector3.zero, ForceMode.VelocityChange);
         ParticlePool.Get(ParticleType.Projectile).Activate(transform.position, (x) => x.Play());
         EnemyProjectilePool.instance.Deactivate(this);
     }

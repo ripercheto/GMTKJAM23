@@ -20,6 +20,10 @@ public class AnimationController : GameBehaviour
 
     private void Update()
     {
+        if (movement.desiredVelocity.x == 0)
+        {
+            return;
+        }
         shouldFaceRight = movement.desiredVelocity.x > 0;
         if (isFacingRight != shouldFaceRight && !isRotating)
         {

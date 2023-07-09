@@ -25,20 +25,7 @@ public class Attack : GameBehaviour
     {
         soundSource.clip = weaponPickupSound;
         soundSource.Play();
-        if (data == weaponData)
-        {
-            //same weapon
-            durability = data.durability;
-        }
-        else
-        {
-            //different, drop
-            if (data != null)
-            {
-                var inst = Instantiate(data.prefab, transform.position, Quaternion.identity);
-                inst.durability = durability;
-            }
-        }
+
         durability = pickup.durability;
         data = weaponData;
         OnDurabilityChanged();

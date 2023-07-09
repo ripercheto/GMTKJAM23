@@ -4899,7 +4899,6 @@ GameObject:
   - component: {fileID: 3661878187259346334}
   - component: {fileID: 4269445674606650329}
   - component: {fileID: 687898177004647234}
-  - component: {fileID: 2830701885625402655}
   m_Layer: 0
   m_Name: DashFX
   m_TagString: Untagged
@@ -9720,17 +9719,3 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &2830701885625402655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7937837867221102200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d5435d825b6e394f843b59019e8c5b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particle: {fileID: 4269445674606650329}
-  type: 0

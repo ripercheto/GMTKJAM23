@@ -5,6 +5,7 @@ public class Movement : MonoBehaviour
 {
     public AudioSource soundSource;
     public AudioClip dodgeSound;
+    public ParticleSystem dodgeFx;
     [SerializeField]
     private float maxSpeed = 10f;
 
@@ -39,6 +40,7 @@ public class Movement : MonoBehaviour
         dashCoroutine = StartCoroutine(OverrideVelocity(direction * power, duration, onEnd));
         soundSource.clip = dodgeSound;
         soundSource.Play();
+        dodgeFx.Play();
     }
 
     private void FixedUpdate()

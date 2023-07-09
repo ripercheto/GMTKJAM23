@@ -3,14 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Health : MonoBehaviour
 {
     public float takeDamageCooldown = 0.1f;
     public float maxHealth = 100;
     public FlashController flashController;
-
-    [ShowInInspector, ReadOnly]
+    public AudioClip[] damageSounds;
+    public AudioSource damageAudioSource;
+    
+    [ShowInInspector, ReadOnly] 
     private float currentHealth;
     public event Action onDeath;
     public event Action<float> onHealthChaned;
@@ -47,7 +50,9 @@ public class Health : MonoBehaviour
         {
             return;
         }
-
+        
+        damageAudioSource.clip = damageSounds[Random.Range(0, damageSounds.Length)];
+        damageAudioSource.Play();
         currentHealth -= amount;
         onHealthChaned?.Invoke(Mathf.Clamp01(currentHealth / maxHealth));
         flashController.Flash(amount > 0 ? Color.white : Color.green);

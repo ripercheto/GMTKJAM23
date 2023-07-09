@@ -100,6 +100,135 @@ MonoBehaviour:
   rend: {fileID: 5554315391805390879}
   delay: 0.1
   restoreDuration: 0.1
+--- !u!1 &2222136703716969426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6000637037352090108}
+  - component: {fileID: 8412785046319518080}
+  m_Layer: 0
+  m_Name: SFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6000637037352090108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2222136703716969426}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9012811448168323284}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &8412785046319518080
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2222136703716969426}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 8525035467200278988, guid: 60ccd2973466d8c46aaf7fa70e93cf00,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 345dac62f2c6de64eb13e7141bb9f0d0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3954922187320904132
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +331,7 @@ Transform:
   m_Children:
   - {fileID: 64099513407565111}
   - {fileID: 414189244921814084}
+  - {fileID: 6000637037352090108}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -221,8 +351,8 @@ MonoBehaviour:
   health: {fileID: 6097419448557745876}
   attack: {fileID: 937698322564625753}
   range: {fileID: 3789507827025724004}
-  attackDistance: 2
   distanceFromTarget: 1
+  distanceFromPath: 2
   attackModeDuration: 3
   attackModeCooldown: 10
   strayDistance: 5
@@ -262,6 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 1439740870311606528}
   health: {fileID: 6097419448557745876}
+  data: {fileID: 0}
 --- !u!114 &6097419448557745876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,8 +405,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714a367fe179cbd4086255f8a0097002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  takeDamageCooldown: 0.1
   maxHealth: 100
   flashController: {fileID: 3960972030447753179}
+  damageSounds:
+  - {fileID: 8300000, guid: 345dac62f2c6de64eb13e7141bb9f0d0, type: 3}
+  - {fileID: 8300000, guid: b544defb5f27db0458c33af74d07a5b1, type: 3}
+  - {fileID: 8300000, guid: 6c1a9c86a82f3b141bd8ec6a6901da72, type: 3}
+  damageAudioSource: {fileID: 8412785046319518080}
   invincible: 0
 --- !u!135 &3221486286775184931
 SphereCollider:

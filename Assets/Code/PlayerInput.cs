@@ -39,9 +39,10 @@ public class PlayerInput : GameBehaviour
         {
             return;
         }
+        var desiredDir = movement.desiredVelocity.To3D().normalized;
         if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1"))
         {
-            pickUpController.TryPlayerUseItem();
+            pickUpController.TryPlayerUseItem(desiredDir);
         }
         Vector2 playerInput;
         playerInput.x = Input.GetAxis("Horizontal");
@@ -50,7 +51,7 @@ public class PlayerInput : GameBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump"))
         {
-            roll.TryRoll(movement.desiredVelocity.To3D().normalized);
+            roll.TryRoll(desiredDir);
         }
     }
 }

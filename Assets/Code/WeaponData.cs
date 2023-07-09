@@ -40,6 +40,7 @@ public class WeaponData : BaseItemData
             var dist = Vector3.Distance(enemy.transform.position, range.transform.position);
             if (enemy.useProjectile)
             {
+                Debug.DrawLine(range.transform.position, enemy.transform.position, Color.blue, 2);
                 if (dist < closestRangedDistance)
                 {
                     closestRangedDistance = dist;

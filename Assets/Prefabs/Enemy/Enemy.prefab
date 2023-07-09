@@ -60,7 +60,7 @@ MonoBehaviour:
   attackStopDistanceHalfDeadZone: 0.5
   attackCooldown: 5
   attackDamage: 2
-  scoreIncrease: 1
+  scoreIncrease: 2
 --- !u!114 &4503998756163005961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,7 +73,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44eb88908507d24aa761fa2f1c6c1cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 2.5
+  soundSource: {fileID: 0}
+  dodgeSound: {fileID: 0}
+  maxSpeed: 2
   maxAcceleration: 100
   body: {fileID: 4652309524286351648}
   desiredVelocity: {x: 0, y: 0}

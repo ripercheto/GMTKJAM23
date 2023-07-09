@@ -60,9 +60,9 @@ MonoBehaviour:
     min: 10
     max: 20
   spawnAmount:
-    min: 5
-    max: 8
-  spawnRange: 5
+    min: 4
+    max: 6
+  spawnRange: 2
   spawnSound: {fileID: 9089581606705715823}
 --- !u!1 &1610971975223128577
 GameObject:

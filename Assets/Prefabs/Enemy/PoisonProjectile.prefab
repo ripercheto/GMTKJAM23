@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 7876024026095192496}
-  speed: 4
+  speed: 6
   aliveDuration: 2
 --- !u!135 &7176235882424068219
 SphereCollider:

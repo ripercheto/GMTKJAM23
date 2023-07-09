@@ -177,15 +177,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   spawnDelay:
-    min: 2
-    max: 4
+    min: 4
+    max: 6
   spawnCooldown:
-    min: 10
-    max: 20
+    min: 15
+    max: 25
   spawnAmount:
-    min: 2
-    max: 5
-  spawnRange: 5
+    min: 1
+    max: 2
+  spawnRange: 2
   spawnSound: {fileID: 4143673022518846537}
 --- !u!1 &5870952566930175396
 GameObject:

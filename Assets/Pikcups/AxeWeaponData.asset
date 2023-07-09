@@ -17,10 +17,10 @@ MonoBehaviour:
     type: 3}
   melee: 0
   damage: 50
-  attackDistance: 5
-  cooldown: 1
+  attackDistance: 6
+  cooldown: 0.25
   duration: 1
-  moveAmount: 8
+  moveAmount: 9
   moveCurve:
     serializedVersion: 2
     m_Curve:
@@ -56,5 +56,5 @@ MonoBehaviour:
     m_RotationOrder: 4
   resetHitEnemiesPoint: 0.5
   attackAngle: 1000
-  durability: 50
+  durability: 100
   durabilityPerHit: 5

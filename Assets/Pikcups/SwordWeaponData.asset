@@ -15,10 +15,12 @@ MonoBehaviour:
   prefab: {fileID: 3502997925512838992, guid: a15c0479cdc36294b93fcd294eedfd8f, type: 3}
   weaponPrefab: {fileID: 3436212203780608517, guid: e9a71359018037946ab0a8d7d9b57842,
     type: 3}
-  damage: 300
-  cooldown: 1
-  duration: 1
-  moveAmount: 1
+  melee: 1
+  damage: 50
+  attackDistance: 2
+  cooldown: 0.5
+  duration: 0.5
+  moveAmount: 0
   moveCurve:
     serializedVersion: 2
     m_Curve:
@@ -44,6 +46,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   resetHitEnemiesPoint: 1
-  attackAngle: 420
+  attackAngle: 360
   durability: 50
   durabilityPerHit: 5

@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   takeDamageCooldown: 0.1
-  maxHealth: 100
+  maxHealth: 50
   flashController: {fileID: 4659857654673722926}
   damageSounds:
   - {fileID: 8300000, guid: 05b49a7f53261ff479d732b67535c167, type: 3}

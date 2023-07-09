@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HealingPotionData
   m_EditorClassIdentifier: 
   prefab: {fileID: 8471774586139002461, guid: 51c9efa69a8603047afa81d3fe4ba0e8, type: 3}
-  healAmount: 10
+  healAmount: 50

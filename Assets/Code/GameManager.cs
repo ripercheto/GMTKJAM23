@@ -58,7 +58,11 @@ public class GameManager : MonoBehaviour
             var dirFromPrincess = (position - princessPos).normalized;
             var pos = (princessPos + dirFromPrincess * distanceFromPrincess).GetFlatPosition();
             var item = itemsToSpawn[Random.Range(0, itemsToSpawn.Length)];
-            Instantiate(item.prefab, pos, Quaternion.identity);
+            var pickUp = Instantiate(item.prefab, pos, Quaternion.identity);
+            if (item is WeaponData weaponData)
+            {
+                pickUp.durability = weaponData.durability;
+            }
             ParticlePool.Get(ParticleType.Spawn).Activate(pos, (x) => x.Play());
         }
     }

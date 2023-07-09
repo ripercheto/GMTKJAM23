@@ -21,7 +21,7 @@ public class PlayerInput : GameBehaviour
 
     private void OnDeath()
     {
-        Instantiate(deathFX, transform.GetFlatPosition() + Vector3.up * 0.1f, Quaternion.identity);
+        Instantiate(deathFX, transform.GetFlatPosition(), Quaternion.identity);
         Destroy(gameObject);
     }
 

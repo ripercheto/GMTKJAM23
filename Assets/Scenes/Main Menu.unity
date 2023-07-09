@@ -3164,7 +3164,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Ctrl while holding a potion to heal yourself
+  m_text: Press Ctrl to heal yourself or to throw weapons
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38fe25ec39cb4b44cac82dca9c51b2d9, type: 2}
   m_sharedMaterial: {fileID: -4197917072781318330, guid: 38fe25ec39cb4b44cac82dca9c51b2d9,

@@ -48,6 +48,7 @@ MonoBehaviour:
   distanceFromPrincess: 6
   itemsToSpawn:
   - {fileID: 11400000, guid: 5c3a8ff3d12f33d4b83e024559c1b349, type: 2}
-  - {fileID: 11400000, guid: 48f12dd3399713141b89bb584cc98f53, type: 2}
   - {fileID: 11400000, guid: aa78f70c410b9264fa441840b5dc4750, type: 2}
+  - {fileID: 11400000, guid: 48f12dd3399713141b89bb584cc98f53, type: 2}
+  - {fileID: 11400000, guid: 48f12dd3399713141b89bb584cc98f53, type: 2}
   delayAfterCharacterDies: 1

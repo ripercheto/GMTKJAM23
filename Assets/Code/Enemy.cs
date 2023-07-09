@@ -46,6 +46,11 @@ public class Enemy : GameBehaviour
 
     private void OnDeath()
     {
+        if (MainCharacters.TryGetPrincess(out var princess))
+        {
+            princess.range.enemies.Remove(this);
+        }
+        
         ScoreCounter.onScoreChanged(scoreIncrease);
         var particlePool = ParticlePool.Get(ParticleType.Death);
         particlePool.Activate(transform.position + particleOffset, (x) => x.Play());

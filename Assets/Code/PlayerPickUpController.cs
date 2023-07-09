@@ -10,6 +10,18 @@ public class PlayerPickUpController : MonoBehaviour
     private float pickUpTime;
     private ItemPickup pickedUpItem;
 
+    private void Awake()
+    {
+        var items = FindObjectsOfType<ItemPickup>();
+        foreach (var item in items)
+        {
+            if (item.itemData is WeaponData weaponData)
+            {
+                item.durability = weaponData.durability;
+            }
+        }
+    }
+
     public void PickUp(ItemPickup itemPickup)
     {
         DropItem();

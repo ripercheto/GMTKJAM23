@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
+    public float durability;
     public BaseItemData itemData;
+
     public void Drop()
     {
         transform.SetParent(null, true);
@@ -14,11 +16,11 @@ public class ItemPickup : MonoBehaviour
 
     public bool TryGivePlayer()
     {
-        return itemData.TryPlayerUse();
+        return itemData.TryPlayerUse(this);
     }
 
     public bool TryGivePrincess()
     {
-        return itemData.TryGivePrincess();
+        return itemData.TryGivePrincess(this);
     }
 }

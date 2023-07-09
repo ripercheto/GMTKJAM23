@@ -10,36 +10,32 @@ public class Attack : GameBehaviour
     private float allowedHitTime;
     public bool HasWeapon => data != null;
 
-    private Dictionary<WeaponData, float> durability = new();
+    private float durability;
     public Action<float> onDurabilityChanged;
-    public float DurabilityAlpha => data == null ? 0 : durability[data] / data.durability;
+    public float DurabilityAlpha => data == null ? 0 : durability / data.durability;
 
     private void Start()
     {
         onDurabilityChanged?.Invoke(HasWeapon ? 1 : 0);
     }
 
-    public bool TryEquipWeapon(WeaponData weaponData)
+    public bool TryEquipWeapon(WeaponData weaponData, ItemPickup pickup)
     {
-        //initialize durability
-        if (!durability.ContainsKey(weaponData))
-        {
-            durability.Add(weaponData, weaponData.durability);
-        }
         if (data == weaponData)
         {
             //same weapon
-            durability[data] = data.durability;
+            durability = data.durability;
         }
         else
         {
             //different, drop
             if (data != null)
             {
-                Instantiate(data.prefab, transform.position, Quaternion.identity);
+                var inst = Instantiate(data.prefab, transform.position, Quaternion.identity);
+                inst.durability = durability;
             }
         }
-
+        durability = pickup.durability;
         data = weaponData;
         OnDurabilityChanged();
         return true;
@@ -75,11 +71,10 @@ public class Attack : GameBehaviour
             {
                 return;
             }
-            durability[data] -= data.durabilityPerHit;
+            durability -= data.durabilityPerHit;
             //destroy if out of durability
-            if (durability[data] <= 0)
+            if (durability <= 0)
             {
-                durability.Remove(data);
                 data = null;
             }
             OnDurabilityChanged();

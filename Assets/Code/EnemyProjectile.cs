@@ -15,6 +15,7 @@ public class EnemyProjectile : MonoBehaviour
     public void Launch(Vector3 dir, float attackDamage)
     {
         damage = attackDamage;
+        body.isKinematic = false;
         body.AddForce(dir * speed, ForceMode.VelocityChange);
     }
 
@@ -44,8 +45,8 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnDeath()
     {
-        body.AddForce(Vector3.zero, ForceMode.VelocityChange);
         ParticlePool.Get(ParticleType.Projectile).Activate(transform.position, (x) => x.Play());
+        body.isKinematic = true;
         EnemyProjectilePool.instance.Deactivate(this);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerRoll : GameBehaviour
 {
+    public GameObject sweatIcon;
     public float power = 5;
     public float duration = 0.1f;
     public float cooldown = 5;
@@ -20,7 +21,7 @@ public class PlayerRoll : GameBehaviour
         var playerLayer = LayerMask.NameToLayer("Player");
         var enemyLayer = LayerMask.NameToLayer("Enemy");
         var enemyProjectileLayer = LayerMask.NameToLayer("EnemyProjectile");
-        
+
         health.flashController.SetFlashActive(true, rollColor);
         Physics.IgnoreLayerCollision(playerLayer, enemyLayer, true);
         Physics.IgnoreLayerCollision(playerLayer, enemyProjectileLayer, true);
@@ -34,6 +35,14 @@ public class PlayerRoll : GameBehaviour
             Physics.IgnoreLayerCollision(playerLayer, enemyLayer, false);
             Physics.IgnoreLayerCollision(playerLayer, enemyProjectileLayer, false);
             health.flashController.SetFlashActive(false, rollColor);
+            sweatIcon.SetActive(true);
+            StartCoroutine(DisableSweat());
         }
+    }
+
+    IEnumerator DisableSweat()
+    {
+        yield return new WaitForSeconds(cooldown);
+        sweatIcon.SetActive(false);
     }
 }

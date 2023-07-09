@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1985086911649847518}
   - component: {fileID: 2374012052710534619}
+  - component: {fileID: 1260022535540015320}
   m_Layer: 0
   m_Name: SweatIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1985086911649847518
 Transform:
   m_ObjectHideFlags: 0
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b04af8de583655f49a533d410cd5f0a5, type: 3}
+  m_Sprite: {fileID: 1692847522, guid: b04af8de583655f49a533d410cd5f0a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,6 +85,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1260022535540015320
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174662717290415355}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 834beaf9046234d46b26fb539bf19e63, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1882206226373981698
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 4503998756163005961}
   health: {fileID: 6069384397602350890}
+  sweatIcon: {fileID: 1174662717290415355}
   power: 25
   duration: 0.25
   cooldown: 2

@@ -63,6 +63,8 @@ MonoBehaviour:
   attackCooldown: 5
   attackDamage: 3
   scoreIncrease: 4
+  soundSource: {fileID: 7735184996897735528}
+  shootSound: {fileID: 8300000, guid: 24328b623bd4c684cbb32223ce38e5b3, type: 3}
 --- !u!114 &4503998756163005961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +83,7 @@ MonoBehaviour:
   maxSpeed: 2.5
   maxAcceleration: 100
   body: {fileID: 4652309524286351648}
+  velocity: {x: 0, y: 0, z: 0}
   desiredVelocity: {x: 0, y: 0}
 --- !u!114 &6069384397602350890
 MonoBehaviour:
@@ -130,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 4503998756163005961}
   health: {fileID: 6069384397602350890}
+  animator: {fileID: 0}
   target: {fileID: 1186014895577322459}
   duration: 0.1
 --- !u!135 &8147374349834057216

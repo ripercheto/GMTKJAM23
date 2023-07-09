@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public float delayAfterCharacterDies = 1;
+    private bool gameOver;
 
     private void Start()
     {
@@ -15,6 +16,12 @@ public class GameManager : MonoBehaviour
 
     private void OnMainDeath()
     {
+        if (gameOver)
+        {
+            return;
+        }
+
+        gameOver = true;
         StartCoroutine(WaitForSeconds());
 
         IEnumerator WaitForSeconds()

@@ -275,6 +275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44eb88908507d24aa761fa2f1c6c1cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundSource: {fileID: 7206691280621399159}
+  dodgeSound: {fileID: 8300000, guid: f4e8aa67487abae4b8dd7c4b581540ac, type: 3}
   maxSpeed: 10
   maxAcceleration: 100
   body: {fileID: 4652309524286351648}
@@ -335,7 +337,7 @@ MonoBehaviour:
   power: 50
   duration: 0.1
   cooldown: 2
-  rollColor: {r: 0, g: 0, b: 1, a: 1}
+  rollColor: {r: 0, g: 0, b: 1, a: 0.74509805}
 --- !u!135 &8147374349834057216
 SphereCollider:
   m_ObjectHideFlags: 0

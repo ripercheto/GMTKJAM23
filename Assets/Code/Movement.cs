@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine;
 public class Movement : MonoBehaviour
 {
+    public AudioSource soundSource;
+    public AudioClip dodgeSound;
     [SerializeField]
     private float maxSpeed = 10f;
 
@@ -35,6 +37,8 @@ public class Movement : MonoBehaviour
             StopCoroutine(dashCoroutine);
         }
         dashCoroutine = StartCoroutine(OverrideVelocity(direction * power, duration, onEnd));
+        soundSource.clip = dodgeSound;
+        soundSource.Play();
     }
 
     private void FixedUpdate()

@@ -7,6 +7,7 @@ public class PlayerInput : GameBehaviour
 {
     public static PlayerInput instance;
 
+    public GameObject deathFX;
     public PlayerPickUpController pickUpController;
     public PlayerRoll roll;
     private bool princessDead;
@@ -14,8 +15,14 @@ public class PlayerInput : GameBehaviour
     private void Awake()
     {
         MainCharacters.AddToMainCharacters(this);
-        health.onDeath += () => Destroy(gameObject);
+        health.onDeath += OnDeath;
         instance = this;
+    }
+
+    private void OnDeath()
+    {
+        Instantiate(deathFX, transform.GetFlatPosition() + Vector3.up * 0.1f, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     private void Start()

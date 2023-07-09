@@ -17,6 +17,7 @@ public class Princess : GameBehaviour
 
     public static Princess instance;
 
+    public GameObject deathFX;
     public PrincessEmotions emotions;
     public Attack attack;
     public PrincessRange range;
@@ -48,6 +49,7 @@ public class Princess : GameBehaviour
 
     private void OnDeath()
     {
+        Instantiate(deathFX, transform.GetFlatPosition() + Vector3.up * 0.1f, Quaternion.identity);
         Destroy(gameObject);
     }
 

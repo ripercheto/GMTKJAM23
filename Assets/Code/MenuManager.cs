@@ -6,6 +6,7 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     public GameObject PauseMenu;
+    public AudioSource music;
 
     private void Awake()
     {
@@ -16,12 +17,14 @@ public class MenuManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         PauseMenu.SetActive(true);
+        music.Pause();
     }
 
     public void Continue()
     {
         Time.timeScale = 1f;
         PauseMenu.SetActive(false);
+        music.UnPause();
     }
 
     void Update()

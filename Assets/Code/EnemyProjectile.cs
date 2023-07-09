@@ -31,14 +31,20 @@ public class EnemyProjectile : MonoBehaviour
             return;
         }
         health.TakeDamage(damage);
-        Destroy(gameObject);
+        OnDeath();
     }
 
     private void Update()
     {
         if (Time.time > deathTime)
         {
-            Destroy(gameObject);
+            OnDeath();
         }
+    }
+
+    private void OnDeath()
+    {
+        ParticlePool.Get(ParticleType.Projectile).Activate(transform.position, (x) => x.Play());
+        EnemyProjectilePool.instance.Deactivate(this);
     }
 }

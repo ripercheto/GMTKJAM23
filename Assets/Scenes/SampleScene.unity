@@ -405,6 +405,11 @@ PrefabInstance:
       propertyPath: attack
       value: 
       objectReference: {fileID: 2097820912678891257}
+    - target: {fileID: 2084997326696561053, guid: 004199c63b99f27438c4ad817efa2201,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3844876628635339538, guid: 004199c63b99f27438c4ad817efa2201,
         type: 3}
       propertyPath: m_AnchoredPosition.x

@@ -353,9 +353,9 @@ MonoBehaviour:
   range: {fileID: 3789507827025724004}
   distanceFromTarget: 1
   distanceFromPath: 2
-  attackModeDuration: 3
+  attackModeDuration: 2
   attackModeCooldown: 10
-  strayDistance: 5
+  strayDistance: 3
   wayPoints:
   - {fileID: 9012811448168323284}
 --- !u!114 &1439740870311606528
@@ -370,6 +370,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44eb88908507d24aa761fa2f1c6c1cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundSource: {fileID: 0}
+  dodgeSound: {fileID: 0}
+  dodgeFx: {fileID: 0}
   maxSpeed: 2
   maxAcceleration: 5
   body: {fileID: 6221975026285820}
